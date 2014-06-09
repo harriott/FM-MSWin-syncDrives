@@ -39,6 +39,7 @@ drv = ['D:/', 'E:/']
 known_empty = [r'\.dropbox\.cache',
                r'Firefox\\.*default\\',
                r'SOFTWARE\\DOTNET\\ENGLISH',
+               r'debian-7.5.0-i386-xfce-CD-1\\Snapshots',
                r'\\CDExPortable\\',
                r'\\Gigabyte GA M57SLI-S4\\',
                r'\\tempera\\admin\\images\\schemes',

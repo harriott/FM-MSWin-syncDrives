@@ -37,11 +37,16 @@ drv = ['D:/', 'E:/']
 # List of empty directories not to be flagged up
 # (add regex's to this as required):
 known_empty = [r'\.dropbox\.cache',
-               r'Firefox\\.*default\\',
+               r'IT\\Cross-platform\\Browsing\\Firefox\\profile\\',
+               r'Firefox\\.*\.default\\',
+               r'MSWinUser\\.*\\.*\.default\\',
+               r'MSWinUser\\.*\\user\\',
+               r'Sharon\'s Music\\',
                r'SOFTWARE\\DOTNET\\ENGLISH',
                r'debian-7.5.0-i386-xfce-CD-1\\Snapshots',
                r'\\CDExPortable\\',
                r'\\Gigabyte GA M57SLI-S4\\',
+               r'GT-S7560 Camera',
                r'\\tempera\\admin\\images\\schemes',
                r'\\\.git\\',
                r'\\\.vim\\',

@@ -40,6 +40,7 @@ known_empty = [r'\.dropbox\.cache',
                r'Cross-platform\\ImageMagick',
                r'IT\\Cross-platform\\Browsing\\Firefox\\profile\\',
                r'Firefox\\.*\.default\\',
+               r'GT-S7560 Camera',
                r'MSWinUser\\.*\\.*\.default\\',
                r'MSWinUser\\.*\\user\\',
                r'MSWin\\AV\\ImageMagick-6.8.9\\',
@@ -48,7 +49,6 @@ known_empty = [r'\.dropbox\.cache',
                r'WriteBackup',
                r'\\CDExPortable\\',
                r'\\Gigabyte GA M57SLI-S4\\',
-               r'\\GT-S7560 Camera\\',
                r'\\tempera\\admin\\images\\schemes',
                r'\\\.git\\',
                r'\\\.vim\\',
@@ -58,9 +58,13 @@ known_empty = [r'\.dropbox\.cache',
                r'debian-7.5.0-i386-xfce-CD-1\\Snapshots',
                r'config\\soffice\.cfg\\modules\\']
 
+# Get this script's directory path:
+sdp = os.getcwd()[3:]
+if(sdp):
+    sdp = sdp + '/'
 # Get this script's filename without extension,
 # for use as the name of the directory to be synched:
-dtbs = (os.path.basename(os.path.splitext(sys.argv[0])[0]))
+dtbs = os.path.basename(os.path.splitext(sys.argv[0])[0])
 # and for use as the name of the output file:
 outfile = dtbs + '.txt'
 print('When this is done, you should open', outfile, '\n')
@@ -121,8 +125,7 @@ empt = [[], []]
 sdc = [0, 0]
 # Get the lists:
 for d in range(0, 2):
-    list[d], sdc[d], empt[d] = dirlister(drv[d] + dtbs)
-print(sdc)
+    list[d], sdc[d], empt[d] = dirlister(drv[d] + sdp + dtbs)
 
 
 # Identify the index of the list to be picked through:

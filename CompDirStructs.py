@@ -38,21 +38,22 @@ drv = ['D:/', 'E:/']
 # (add regex's to this as required):
 known_empty = [r'\.dropbox\.cache',
                r'Cross-platform\\ImageMagick',
+               # anonymized Firefox profile folders:
                r'IT\\Cross-platform\\Browsing\\Firefox\\profile\\',
-               r'Firefox\\.*\.default\\',
                r'GT-S7560 Camera',
+               r'Gigabyte GA M57SLI-S4\\',
+               # my Firefox profile folders:
                r'MSWinUser\\.*\\.*\.default\\',
+               # my LibreOffice profile folders:
                r'MSWinUser\\.*\\user\\',
                r'MSWin\\AV\\ImageMagick-6.8.9\\',
                r'Sharon\'s Music\\',
                r'SOFTWARE\\DOTNET\\ENGLISH',
                r'WriteBackup',
                r'\\CDExPortable\\',
-               r'\\Gigabyte GA M57SLI-S4\\',
                r'\\tempera\\admin\\images\\schemes',
                r'\\\.git\\',
                r'\\\.vim\\',
-               r'\\vim-markdown\\\.git\\',
                r'\\vimfiles\\',
                r'backup-.*_josep396\\',
                r'debian-7.5.0-i386-xfce-CD-1\\Snapshots',

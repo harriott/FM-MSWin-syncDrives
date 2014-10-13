@@ -40,6 +40,7 @@ known_empty = [r'\.dropbox\.cache',
                r'Cross-platform\\ImageMagick',
                # anonymized Firefox profile folders:
                r'IT\\Cross-platform\\Browsing\\Firefox\\profile\\',
+               r'Cross-platform\\pandoc-master\\data\\templates',
                r'GT-S7560 Camera',
                r'Gigabyte GA M57SLI-S4\\',
                # my Firefox profile folders:

@@ -31,8 +31,9 @@ start = time.time()
 # Get the datetime:
 startd = datetime.datetime.now().isoformat(' ')
 
-# Specify the parent directory's location:
-drv = ['D:/', 'E:/']
+# Specify the parent directory's location
+# (the third value is for special case when this file is Current.py):
+drv = ['D:/', 'E:/', 'F:/']
 
 # List of empty directories not to be flagged up
 # (add regex's to this as required):
@@ -74,7 +75,7 @@ print('When this is done, you should open', outfile, '\n')
 
 def dirlister(dirTolist):
     """ Prepare a subdirectory list, with relative paths included.
-    (Progress is reported, and odd directories are highlighted.)"""
+    (Progress is reported, and odd directories are noted.)"""
     print('Looking at contents of', dirTolist, ':')
     dlc = olc = 0
     # Initialise two lists just with the base folder path:
@@ -104,17 +105,15 @@ def dirlister(dirTolist):
                     dirList.append(relpath)
                 else:
                     # Add relative path to the subdirectory name, and store it
-                    # in the list of empty directories:
+                    # in the list of odd or empty directories:
                     oddList.append(relpath)
                     olc += 1
-                    # Store the full path of an empty directory in the list
-                    # (thus highlighting it):
-                    # dirList.append(abspath)
     print(' - subdirectory records loaded in')
     # Adjust the first (title) items:
     dlctxt = (' ---> contains ' + str(dlc) + ' subdirectories, these ones ')
-    oddList[0] += (dlctxt + 'are oddly Empty:')
+    oddList[0] += (dlctxt + 'are odd or Empty:')
     dirList[0] += (dlctxt + 'are Unmatched:')
+    # unmatched list & count, and the list of odd or empty:
     return dirList, (dlc - olc), oddList
 
 
@@ -125,17 +124,27 @@ list = [[], []]
 empt = [[], []]
 # and the two counts:
 sdc = [0, 0]
-# Get the lists:
-for d in range(0, 2):
-    list[d], sdc[d], empt[d] = dirlister(drv[d] + sdp + dtbs)
+# Get the lists, the local directory is alongside this script:
+list[0], sdc[0], empt[0] = dirlister(drv[0] + sdp + dtbs)
+# the external directory may have a reduced path:
+if dtbs == 'Current':
+    list[1], sdc[1], empt[1] = dirlister(drv[2] + dtbs)
+elif dtbs == 'Stack':
+    list[1], sdc[1], empt[1] = dirlister(drv[1] + dtbs)
+else:
+    # or an equivalent external path:
+    list[1], sdc[1], empt[1] = dirlister(drv[1] + sdp + dtbs)
 
 
 # Identify the index of the list to be picked through:
+# it can be the 2nd list:
+d = 1
+# but not if the 1st is shorter:
 if sdc[0] < sdc[1]:
     d = 0
 # Prepare an empty list to move unmatched items into:
 listd = []
-# Identify an index for the other (possibly longer) list:
+# Get the index for the other (possibly longer) list:
 dl = abs(d-1)
 
 # Pick through one list now, comparing items with with the other list:
@@ -147,7 +156,7 @@ for _ in range(sdc[d]+1):
     # If the item's in the other list, remove it from there too:
     try:
         list[dl].remove(item)
-    # If not, save it to the (new) unmatched list:
+    # If not, save it to the (new) unmatched pick-list:
     except ValueError:
         listd.append(item)
 print(' - subdirectory records compared')

@@ -43,13 +43,14 @@ known_empty = [r'\.dropbox\.cache',
                r'IT\\Cross-platform\\Browsing\\Firefox\\profile\\',
                r'Cross-platform\\pandoc-master\\data\\templates',
                r'GT-S7560 Camera',
-               r'Gigabyte GA M57SLI-S4\\',
                # my Firefox profile folders:
                r'MSWinUser\\.*\\.*\.default\\',
                # my LibreOffice profile folders:
                r'MSWinUser\\.*\\user\\',
                r'MSWin\\AV\\ImageMagick-6.8.9\\',
+               r'\\Q-Dir\\Favoriten\\Quick-Link',
                r'Sharon\'s Music\\',
+               # Canon PowerShot A470\Software\CD:
                r'SOFTWARE\\DOTNET\\ENGLISH',
                r'WriteBackup',
                r'\\CDExPortable\\',
@@ -130,7 +131,7 @@ list[0], sdc[0], empt[0] = dirlister(drv[0] + sdp + dtbs)
 if dtbs == 'Current':
     list[1], sdc[1], empt[1] = dirlister(drv[2] + dtbs)
 elif dtbs == 'Stack':
-    list[1], sdc[1], empt[1] = dirlister(drv[1] + dtbs)
+    list[1], sdc[1], empt[1] = dirlister(drv[1] + 'Dr_' + dtbs)
 else:
     # or an equivalent external path:
     list[1], sdc[1], empt[1] = dirlister(drv[1] + sdp + dtbs)

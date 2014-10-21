@@ -43,6 +43,8 @@ known_empty = [r'\.dropbox\.cache',
                r'IT\\Cross-platform\\Browsing\\Firefox\\profile\\',
                r'Cross-platform\\pandoc-master\\data\\templates',
                r'GT-S7560 Camera',
+               # from my notes "to reduce":
+               r'Gigabyte GA M57SLI-S4\\',
                # my Firefox profile folders:
                r'MSWinUser\\.*\\.*\.default\\',
                # my LibreOffice profile folders:

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# vim: set tw=79:
+# vim: set cc=80 tw=79:
 
 """
 Print to file differences in two directory structures, ignoring file contents.
@@ -19,12 +19,12 @@ to guide me through some manual directory synching before running SyncBackFree.
 This program does not change anything, but just (re)writes the result file,
 which is automatically named after this program.
 """
+import datetime
 import os
+import re
 import socket
 import sys
 import time
-import datetime
-import re
 
 # Get the start time, to be able to check against later:
 start = time.time()
@@ -54,6 +54,7 @@ known_empty = [r'\.dropbox\.cache',
                r'Sharon\'s Music\\',
                # Canon PowerShot A470\Software\CD:
                r'SOFTWARE\\DOTNET\\ENGLISH',
+               r'Unix-like\\GNU-Linux\\Arch\\package-query.*',
                r'WriteBackup',
                r'\\CDExPortable\\',
                r'\\tempera\\admin\\images\\schemes',
@@ -132,7 +133,7 @@ list[0], sdc[0], empt[0] = dirlister(drv[0] + sdp + dtbs)
 # the external directory may have a reduced path:
 if dtbs == 'Current':
     list[1], sdc[1], empt[1] = dirlister(drv[2] + dtbs)
-elif dtbs == 'Stack':
+elif dtbs == 'Copied' or dtbs == 'Stack':
     list[1], sdc[1], empt[1] = dirlister(drv[1] + 'Dr_' + dtbs)
 else:
     # or an equivalent external path:

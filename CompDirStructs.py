@@ -131,7 +131,7 @@ sdc = [0, 0]
 # Get the lists, the local directory is alongside this script:
 list[0], sdc[0], empt[0] = dirlister(drv[0] + sdp + dtbs)
 # the external directory may have a reduced path:
-if dtbs == 'Current':
+if dtbs == 'Current' or dtbs == 'Pointure_23':
     list[1], sdc[1], empt[1] = dirlister(drv[2] + dtbs)
 elif dtbs == 'Copied' or dtbs == 'Stack':
     list[1], sdc[1], empt[1] = dirlister(drv[1] + 'Dr_' + dtbs)

@@ -49,6 +49,7 @@ known_empty = [r'\.dropbox\.cache',
                r'MSWinUser\\.*\\.*\.default\\',
                # my LibreOffice profile folders:
                r'MSWinUser\\.*\\user\\',
+               r'MSWin\\Notepad\+\+\\npp.6.7.7.bin\\plugins\\doc',
                r'MSWin\\AV\\ImageMagick-6.8.9\\',
                r'\\Q-Dir\\Favoriten\\Quick-Link',
                r'Sharon\'s Music\\',

@@ -19,16 +19,23 @@ $outf="CheckFATtimes-"+$computer+".txt"
 $now=Get-Date -format "ddd dd MMM yyyy HH:mm:ss"
 "$computer"+": $now" >> $outf
 "" >> $outf
-"Files on FAT32 drive's time offsets (-days.hours:minutes:seconds is older by that; - is not there):" >> $outf
+"Files on FAT32 drive's time offsets:" >> $outf
+" -days.hours:minutes:seconds => is older by that" >> $outf
+"                           - => is not there" >> $outf
+"      3600   file's 1h newer than local" >> $outf
+"      7200   file's 2h newer than local" >> $outf
+"     -3600   file's 1h older than local" >> $outf
+"     -7200   file's 2h older than local" >> $outf
+"         -   file ain't there" >> $outf
 "" >> $outf
 
 gci $locald -r| # get all the directory contents recursively
 foreach{
 	$localitem=$_.fullname
 	$liLWT=$_.LastWriteTime
-	$liTD=NEW-TIMESPAN -Start $now -End $liLWT
-	#"$liTD $localitem" >> $outf
-	"{0,14} {1,-1}" -f $liTD, $localitem >> $outf
+	$liTAhead=(NEW-TIMESPAN -Start $now -End $liLWT)
+	$liSAhead=(NEW-TIMESPAN -Start $now -End $liLWT).totalseconds -replace '\.\d+$'
+	"{0,17} {1,-1}" -f $liTAhead, $localitem >> $outf
+	"{0,17} {1,-1}" -f $liSAhead, $localitem >> $outf
 }
-Write-Output $results
 

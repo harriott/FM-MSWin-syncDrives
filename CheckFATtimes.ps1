@@ -9,9 +9,8 @@
 $computer = gc env:computername
 $localrd="D:\Dropbox\"
 $lrdl=$localrd.length
-"$lrdl"
 $FAT32rd="F:\"
-$locald=$localrd+"Current\Copied\Nederland\Rotterdam*"
+$locald=$localrd+"Current"
 
 # Prepare the output file:
 #$outf=$FAT32rd+"CheckFATtimes-"+$computer+".txt"
@@ -22,20 +21,25 @@ $now=Get-Date -format "ddd dd MMM yyyy HH:mm:ss"
 "$computer"+": $now" >> $outf
 "" >> $outf
 "Files on FAT32 drive's time offsets:" >> $outf
-" -days.hours:minutes:seconds => is older by that" >> $outf
-"                           - => is not there" >> $outf
-"      3600   file's 1h newer than local" >> $outf
-"      7200   file's 2h newer than local" >> $outf
-"     -3600   file's 1h older than local" >> $outf
-"     -7200   file's 2h older than local" >> $outf
-"         -   file ain't there" >> $outf
+"      7200 file's 2h newer than local" >> $outf
+"      3600 file's 1h newer than local" >> $outf
+"     -3600 file's 1h older than local" >> $outf
+"     -7200 file's 2h older than local" >> $outf
+"         - file ain't there" >> $outf
 "" >> $outf
 
-gci $locald -r| # get all the directory contents recursively
+gci $locald -r | where {$_.psIsContainer -eq $false}| # get all the files recursively
 foreach{
-	$localitem=$_.fullname.substring(11)
+	$localfn=$_.fullname.substring(11)
 	$liLWT=$_.LastWriteTime
-	$liSAhead=(NEW-TIMESPAN -Start $now -End $liLWT).totalseconds -replace '\.\d+$'
-	"{0,10} {1,-1}" -f $liSAhead, $localitem >> $outf
+	$FAT32fn=$FAT32rd+$localfn
+	if (test-path "$FAT32fn"){
+		$FAT32item=gci "$FAT32fn"
+		$F3LWT=$FAT32item.LastWriteTime
+		$F3SAhead=(NEW-TIMESPAN -Start $liLWT -End $F3LWT).totalseconds -replace '\.\d+$'
+	} else{
+		$F3SAhead="-"
+	}
+	if ($F3SAhead -ne "0"){ "{0,10} {1,-1}" -f $F3SAhead, $FAT32fn >> $outf }
 }
 

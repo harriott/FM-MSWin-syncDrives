@@ -8,6 +8,8 @@
 
 $computer = gc env:computername
 $localrd="D:\Dropbox\"
+$lrdl=$localrd.length
+"$lrdl"
 $FAT32rd="F:\"
 $locald=$localrd+"Current\Copied\Nederland\Rotterdam*"
 
@@ -31,11 +33,9 @@ $now=Get-Date -format "ddd dd MMM yyyy HH:mm:ss"
 
 gci $locald -r| # get all the directory contents recursively
 foreach{
-	$localitem=$_.fullname
+	$localitem=$_.fullname.substring(11)
 	$liLWT=$_.LastWriteTime
-	$liTAhead=(NEW-TIMESPAN -Start $now -End $liLWT)
 	$liSAhead=(NEW-TIMESPAN -Start $now -End $liLWT).totalseconds -replace '\.\d+$'
-	"{0,17} {1,-1}" -f $liTAhead, $localitem >> $outf
-	"{0,17} {1,-1}" -f $liSAhead, $localitem >> $outf
+	"{0,10} {1,-1}" -f $liSAhead, $localitem >> $outf
 }
 

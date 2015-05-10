@@ -33,10 +33,13 @@ ForEach($folder in $folders){
 	$FAT32d=$FAT32rd+$folder
 	# Get all the files recursively:
 	echo "Getting  $locald  child-items"
+	echo "Comparing from  $locald" >> $outf
+	"" >> $outf
 	$localitems = gci $locald -r | where {$_.psIsContainer -eq $false}
 
 	# loop method:
 	$lm = Get-Date
+	"- comparing against  $FAT32d"
 	$totalCount = $localitems.Count
 	$i = 0
 	$localitems | %{
@@ -54,10 +57,19 @@ ForEach($folder in $folders){
 		}
 		if ($F3SAhead -ne "0"){ "{0,10} {1,-1}" -f $F3SAhead, $FAT32fn >> $outf }
 	}
+	"" >> $outf
+	$tt = (new-timespan -start $lm -end (Get-Date)).totalseconds
+	echo "- took $tt seconds" >> $outf
+	"" >> $outf
 
 	# Intersection/difference method:
 	$idm = Get-Date
-	echo "Getting $FAT32d child-items"
+	echo "Getting  $FAT32d  child-items"
 	$FAT32items = gci $FAT32d -r | where {$_.psIsContainer -eq $false}
+	"" >> $outf
+	$tt = (new-timespan -start $idm -end (Get-Date)).totalseconds
+	echo "- took $tt seconds" >> $outf
+	"" >> $outf
+	echo $localitems|?{$FAT32items -contains $_}
 }
 

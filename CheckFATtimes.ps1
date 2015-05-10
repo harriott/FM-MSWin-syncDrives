@@ -14,10 +14,11 @@ $locald=$localrd+"Current"
 
 # Prepare the output file:
 $outf=$FAT32rd+"CheckFATtimes-"+$computer+".txt"
+"Preparing $outf"
 "vim: tw=0:" > $outf
 "" >> $outf
-$now=Get-Date -format "ddd dd MMM yyyy HH:mm:ss"
-"$computer"+": $now" >> $outf
+$startts=Get-Date -format "ddd dd MMM yyyy HH:mm:ss"
+"$computer"+": $startts" >> $outf
 "" >> $outf
 "Files on FAT32 drive's time offsets:" >> $outf
 "      7200 file's 2h newer than local" >> $outf
@@ -27,8 +28,10 @@ $now=Get-Date -format "ddd dd MMM yyyy HH:mm:ss"
 "         - file ain't there" >> $outf
 "" >> $outf
 
+echo "Getting $locald child-items"
 $localitems = gci $locald -r | where {$_.psIsContainer -eq $false} # get all the files recursively
 $totalCount = $localitems.Count
+echo "Comparing with "$FAT32rd"Current"
 $localitems | %{
     $i = $i + 1
     Write-Progress -Activity "Searching Files" -status "Searching File  $i of     $totalCount" -percentComplete ($i / $localitems.Count * 100)

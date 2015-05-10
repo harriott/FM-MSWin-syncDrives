@@ -10,7 +10,7 @@ $computer = gc env:computername
 $localrd="D:\Dropbox\"
 $lrdl=$localrd.length
 $FAT32rd="F:\"
-$folders = @("Current\Git\mds-ToC\DailyLife", "Pointure_23\EsL\Le 6B FAR\c71 visit")
+$folders = @("Current\Git\mds-ToC\DailyLife", "Pointure_23\.git")
 
 # Prepare the output file:
 $outf=$FAT32rd+"CheckFATtimes-"+$computer+".txt"
@@ -20,7 +20,7 @@ $outf=$FAT32rd+"CheckFATtimes-"+$computer+".txt"
 $startts=Get-Date -format "ddd dd MMM yyyy HH:mm:ss"
 "$computer"+": $startts" >> $outf
 "" >> $outf
-"Files on FAT32 drive's time offsets:" >> $outf
+"Files on FAT32 drive's time offsets (rounded to whole seconds):" >> $outf
 "      7200 file's 2h newer than local" >> $outf
 "      3600 file's 1h newer than local" >> $outf
 "     -3600 file's 1h older than local" >> $outf
@@ -37,7 +37,6 @@ ForEach($folder in $folders){
 	"" >> $outf
 	$localitems = gci $locald -r | where {$_.psIsContainer -eq $false}
 
-	# loop method:
 	$lm = Get-Date
 	"- comparing against  $FAT32d"
 	$totalCount = $localitems.Count
@@ -51,25 +50,15 @@ ForEach($folder in $folders){
 		if (test-path "$FAT32fn"){
 			$FAT32item=gci "$FAT32fn"
 			$F3LWT=$FAT32item.LastWriteTime
-			$F3SAhead=(NEW-TIMESPAN -Start $liLWT -End $F3LWT).totalseconds -replace '\.\d+$'
+			$F3SAhead=(NEW-TIMESPAN -Start $liLWT -End $F3LWT).totalseconds
 		} else{
 			$F3SAhead="-"
 		}
-		if ($F3SAhead -ne "0"){ "{0,10} {1,-1}" -f $F3SAhead, $FAT32fn >> $outf }
+		if ($F3SAhead -ne "0"){ "{0,10} {1,-1}" -f [math]::Round($F3SAhead), $FAT32fn >> $outf }
 	}
 	"" >> $outf
 	$tt = (new-timespan -start $lm -end (Get-Date)).totalseconds
 	echo "- took $tt seconds" >> $outf
 	"" >> $outf
-
-	# Intersection/difference method:
-	$idm = Get-Date
-	echo "Getting  $FAT32d  child-items"
-	$FAT32items = gci $FAT32d -r | where {$_.psIsContainer -eq $false}
-	"" >> $outf
-	$tt = (new-timespan -start $idm -end (Get-Date)).totalseconds
-	echo "- took $tt seconds" >> $outf
-	"" >> $outf
-	echo $localitems|?{$FAT32items -contains $_}
 }
 

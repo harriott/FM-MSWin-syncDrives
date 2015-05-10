@@ -13,8 +13,7 @@ $FAT32rd="F:\"
 $locald=$localrd+"Current"
 
 # Prepare the output file:
-#$outf=$FAT32rd+"CheckFATtimes-"+$computer+".txt"
-$outf="CheckFATtimes-"+$computer+".txt"
+$outf=$FAT32rd+"CheckFATtimes-"+$computer+".txt"
 "vim: tw=0:" > $outf
 "" >> $outf
 $now=Get-Date -format "ddd dd MMM yyyy HH:mm:ss"
@@ -28,8 +27,11 @@ $now=Get-Date -format "ddd dd MMM yyyy HH:mm:ss"
 "         - file ain't there" >> $outf
 "" >> $outf
 
-gci $locald -r | where {$_.psIsContainer -eq $false}| # get all the files recursively
-foreach{
+$localitems = gci $locald -r | where {$_.psIsContainer -eq $false} # get all the files recursively
+$totalCount = $localitems.Count
+$localitems | %{
+    $i = $i + 1
+    Write-Progress -Activity "Searching Files" -status "Searching File  $i of     $totalCount" -percentComplete ($i / $localitems.Count * 100)
 	$localfn=$_.fullname.substring(11)
 	$liLWT=$_.LastWriteTime
 	$FAT32fn=$FAT32rd+$localfn

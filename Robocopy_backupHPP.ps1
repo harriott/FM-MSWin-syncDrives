@@ -14,8 +14,8 @@ $Folders = @(
   (1,"E:\DropboxFiles\Photos","G:\Robocopy-backup-HPP\Dr_Photos","G:\Dr_Photos"),
   (0,0,0)
   )
-$IntFolder = "E:\DropboxFiles\Copied"
-$ExtFolder = "G:\Dr_Copied"
+echo @($Folders).length
+foreach ($Fpair in $Folders) {$Fpair}
 if ( $Folders[0][0] ) {
   $Command0 = "`"vim: nowrap tw=0: hi`" > $LogFile"
   $IntFolder = $Folders[0][1]

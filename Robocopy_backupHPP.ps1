@@ -10,27 +10,33 @@
 # H: K16GB500
 
 $Folders = @(
-  (1,"E:\DropboxFiles\Copied","G:\Robocopy-backup-HPP\Dr_Copied","G:\Dr_Copied"),
-  (1,"E:\DropboxFiles\Photos","G:\Robocopy-backup-HPP\Dr_Photos","G:\Dr_Photos"),
+  (1,"E:\DropboxFiles\Close","G:\Robocopy-backup-HPP\Close","H:\Close"),
+  (1,"E:\DropboxFiles\Copied","G:\Robocopy-backup-HPP\Copied","G:\Dr_Copied"),
+  (1,"E:\DropboxFiles\Further","G:\Robocopy-backup-HPP\Further","H:\Further"),
+  (1,"E:\DropboxFiles\Now","G:\Robocopy-backup-HPP\Now","H:\Now"),
+  (1,"E:\DropboxFiles\Photos","G:\Robocopy-backup-HPP\Photos","G:\Dr_Photos"),
+  (1,"E:\DropboxFiles\Pointure_23","G:\Robocopy-backup-HPP\Pointure_23","G:\Dr_Pointure_23"),
+  (1,"E:\Files","G:\Robocopy-backup-HPP\Files","G:\Files"),
   (0,0,0)
   )
 echo @($Folders).length
-foreach ($Fpair in $Folders) {$Fpair}
-if ( $Folders[0][0] ) {
-  $Command0 = "`"vim: nowrap tw=0: hi`" > $LogFile"
-  $IntFolder = $Folders[0][1]
-  $IntFolder
-  $ExtFolder = $Folders[0][2]
-  $ExtFolder
-  $LogFile = $ExtFolder+".log"
-  $LogFile
-  $Command1 = "robocopy /mir $IntFolder $ExtFolder /unilog+:$LogFile /tee"
-  if ( $(Try { Test-Path $ExtFolder.trim() } Catch { $false }) ) {
-    # iex $Command0
-    # "" >> $LogFile
-    # "$Command0; $Command1" >> $LogFile
-    # iex $Command1
-  } else {$ExtFolder+" ain't there"}
+foreach ($Fpair in $Folders) {
+  if ( $Fpair[0] ) {
+    $IntFolder = $Fpair[1]
+    $IntFolder
+    $ExtFolder = $Fpair[2]
+    $ExtFolder
+    $LogFile = $ExtFolder+".log"
+    $LogFile
+    $Command0 = "`"vim: nowrap tw=0: hi`" > $LogFile"
+    $Command1 = "robocopy /mir $IntFolder $ExtFolder /unilog+:$LogFile /tee"
+    if ( $(Try { Test-Path $ExtFolder.trim() } Catch { $false }) ) {
+      iex $Command0
+      "" >> $LogFile
+      "$Command0; $Command1" >> $LogFile
+      # iex $Command1
+    } else {$ExtFolder+" ain't there"}
+  }
 }
 # "vim: nowrap tw=0:" > H:\Now_fromHPP.log; robocopy /mir E:\DropboxFiles\Now H:\Now /unilog+:H:\Now_fromHPP.log /tee
 # These are the wrong way around:

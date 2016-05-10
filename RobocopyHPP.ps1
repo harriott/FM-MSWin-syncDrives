@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------
 # E: MQ01ABF050
 # G: Samsung M3
-# H: K16GB500
+# H: K16GB500 = FAT
 
 $backupFolder = "G:\Robocopy-backup-HPP"
 $FoldersArray = @(
@@ -44,7 +44,7 @@ if ($reply -ceq "b") {"Okay, running backups to $backupFolder`n"}
 	if ( $replyCheck -ne "y" ) {exit}
   } elseif ($reply -ceq "t") {
 	  "Okay, running simulation for `"mirror to external drives`"`n"
-	  $simulate = "/l"
+	  $simulate = " /l"
   } elseif ($reply -ceq "F") {
       [System.Console]::BackgroundColor = 'Yellow'
       [System.Console]::ForegroundColor = 'DarkBlue'
@@ -55,7 +55,7 @@ if ($reply -ceq "b") {"Okay, running backups to $backupFolder`n"}
   	if ( $replyCheck -ne "y" ) {exit}
   } elseif ($reply -ceq "f") {
 	  "Okay, running simulation for `"mirror from external drives`"`n"
-	  $simulate = "/l"
+	  $simulate = " /l"
   } else { exit }
 
 # Prepare a file to log all of the changes made:
@@ -79,6 +79,7 @@ foreach ($FolderControl in $FoldersArray) {
 	} else {
       if ( ! $(Try { Test-Path $FolderControl[3].trim() } Catch { $false }) ) {
 		  "Sorry, "+$FolderControl[3]+"  ain't there.`n"; continue }
+	  if ( $FolderControl[3] -match "^H" ) { $FAT = " /fft" } else { $FAT ="" }
       if ($reply -eq "t") {
         $frFolder = $FolderControl[1]
         $toFolder = $FolderControl[3]
@@ -94,22 +95,23 @@ foreach ($FolderControl in $FoldersArray) {
     $toFolder
     $LogFile
     $Command0 = "`"vim: nowrap tw=0:`" > $LogFile"
-    $Command1 = "robocopy /mir $frFolder $toFolder /np /unilog+:$LogFile /tee $simulate"
+    $Command1 = "robocopy /mir $frFolder $toFolder /np /unilog+:$LogFile /tee"+$simulate+$FAT
 	$Command1
 	# do the Robocopy:
-    # iex $Command0
-    # "" >> $LogFile
-    # "$Command0; $Command1" >> $LogFile
-    # iex $Command1
+    iex $Command0
+    "" >> $LogFile
+    "$Command0; $Command1" >> $LogFile
+    iex $Command1
 	# log the changes:
 	"" >> $ChangesLog
 	$Command1 >> $ChangesLog
 	"logging any changes to $ChangesLog"
 	""
-    gc $LogFile | select-string '    New File|    Older|  *EXTRA File|  New Dir|*EXTRA Dir' >> $ChangesLog
+    gc $LogFile | select-string '    New File|    Newer|    Older|`*EXTRA File|  New Dir|`*EXTRA Dir' >> $ChangesLog
   }
 }
 ""
 
 # Sign off:
 Write-Host "All done and logged individually, with all of the changes saved together to  $ChangesLog" -background darkcyan -foreground white
+""

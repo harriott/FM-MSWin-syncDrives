@@ -12,13 +12,13 @@
 $backupFolder = "G:\Robocopy-backup-HPP"
 $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
-  (0,"E:\DropboxFiles\Close","$backupFolder\Close","H:\Close"),
-  (0,"E:\DropboxFiles\Copied","$backupFolder\Copied","G:\Dr_Copied"),
-  (0,"E:\DropboxFiles\Further","$backupFolder\Further","H:\Further"),
+  (1,"E:\DropboxFiles\Close","$backupFolder\Close","H:\Close"),
+  (1,"E:\DropboxFiles\Copied","$backupFolder\Copied","G:\Dr_Copied"),
+  (1,"E:\DropboxFiles\Further","$backupFolder\Further","H:\Further"),
   (1,"E:\DropboxFiles\Now","$backupFolder\Now","H:\Now"),
   (1,"E:\DropboxFiles\Photos","$backupFolder\Photos","G:\Dr_Photos"),
-  (0,"E:\DropboxFiles\Pointure_23","$backupFolder\Pointure_23","G:\Dr_Pointure_23"),
-  (0,"E:\Files","$backupFolder\Files","G:\Files"),
+  (1,"E:\DropboxFiles\Pointure_23","$backupFolder\Pointure_23","G:\Dr_Pointure_23"),
+  (1,"E:\Files","$backupFolder\Files","G:\Files"),
   (0,0,0) # dummy row
   )
 
@@ -64,7 +64,6 @@ $ThisScript = $PSCommandPath.TrimStart($PSScriptRoot)
 "vim: nowrap tw=0:" > $ChangesLog
 "" >> $ChangesLog
 "Changes made by $ThisScript`:" >> $ChangesLog
-"" >> $ChangesLog
 
 # Attempt to do the work requested:
 foreach ($FolderControl in $FoldersArray) {
@@ -76,31 +75,38 @@ foreach ($FolderControl in $FoldersArray) {
       $toFolder = $FolderControl[2]
       if ( ! $(Try { Test-Path $toFolder.trim() } Catch { $false }) ) {
 		  "Sorry, $toFolder  ain't there.`n"; continue }
+      $LogFile = $toFolder+".log"
 	} else {
       if ( ! $(Try { Test-Path $FolderControl[3].trim() } Catch { $false }) ) {
 		  "Sorry, "+$FolderControl[3]+"  ain't there.`n"; continue }
       if ($reply -eq "t") {
         $frFolder = $FolderControl[1]
         $toFolder = $FolderControl[3]
+        $LogFile = $toFolder+"_fromHPP.log"
 	  } else {
         $frFolder = $FolderControl[3]
         $toFolder = $FolderControl[1]
+        $LogFile = $frFolder+"_toHPP.log"
 	  }
 	}
 	# ready to go ahead, prepare:
 	$frFolder
     $toFolder
-    $LogFile = $toFolder+".log"
     $LogFile
     $Command0 = "`"vim: nowrap tw=0:`" > $LogFile"
     $Command1 = "robocopy /mir $frFolder $toFolder /np /unilog+:$LogFile /tee $simulate"
 	$Command1
-	""
 	# do the Robocopy:
     # iex $Command0
     # "" >> $LogFile
     # "$Command0; $Command1" >> $LogFile
     # iex $Command1
+	# log the changes:
+	"" >> $ChangesLog
+	$Command1 >> $ChangesLog
+	"logging any changes to $ChangesLog"
+	""
+    gc $LogFile | select-string '    New File|    Older|  *EXTRA File|  New Dir|*EXTRA Dir' >> $ChangesLog
   }
 }
 ""

@@ -59,8 +59,8 @@ if ($reply -ceq "b") {"Okay, running backups to $backupFolder`n"}
   } else { exit }
 
 # Prepare a file to log all of the changes made:
-$ChangesLog = $PSCommandPath.TrimEnd("ps1")+"log"
 $ThisScript = $PSCommandPath.TrimStart($PSScriptRoot)
+$ChangesLog = "E:\"+$ThisScript.TrimEnd("ps1")+"log"
 "vim: nowrap tw=0:" > $ChangesLog
 "" >> $ChangesLog
 "Changes made by $ThisScript`:" >> $ChangesLog

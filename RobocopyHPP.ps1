@@ -63,7 +63,8 @@ $ThisScript = $PSCommandPath.TrimStart($PSScriptRoot)
 $ChangesLog = "E:\"+$ThisScript.TrimEnd("ps1")+"log"
 "vim: nowrap tw=0:" > $ChangesLog
 "" >> $ChangesLog
-"Changes made by $ThisScript`:" >> $ChangesLog
+if ( $simulate ) { $simulated = " (SIMULATED)" } else { $simulated ="" }
+"Changes made by $ThisScript$simulated`:" >> $ChangesLog
 
 # Attempt to do the work requested:
 foreach ($FolderControl in $FoldersArray) {

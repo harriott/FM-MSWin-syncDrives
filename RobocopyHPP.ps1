@@ -68,26 +68,35 @@ $ThisScript = $PSCommandPath.TrimStart($PSScriptRoot)
 
 # Attempt to do the work requested:
 foreach ($FolderControl in $FoldersArray) {
+  # check that this folder is wanted:
   if ( $FolderControl[0] ) {
+	# prepare the from & to folders:
     if ($reply -ceq "b") {
       $frFolder = $FolderControl[1]
       $toFolder = $FolderControl[2]
       if ( ! $(Try { Test-Path $toFolder.trim() } Catch { $false }) ) {
 		  "Sorry, $toFolder  ain't there.`n"; continue }
-	} elseif ($reply -match "^t$|^f$") {
+	} else {
       if ( ! $(Try { Test-Path $FolderControl[3].trim() } Catch { $false }) ) {
 		  "Sorry, "+$FolderControl[3]+"  ain't there.`n"; continue }
-      $frFolder = $FolderControl[1]
-      $toFolder = $FolderControl[3]
+      if ($reply -eq "t") {
+        $frFolder = $FolderControl[1]
+        $toFolder = $FolderControl[3]
+	  } else {
+        $frFolder = $FolderControl[3]
+        $toFolder = $FolderControl[1]
+	  }
 	}
-    $LogFile = $toFolder+".log"
+	# ready to go ahead, prepare:
 	$frFolder
     $toFolder
+    $LogFile = $toFolder+".log"
     $LogFile
-	""
     $Command0 = "`"vim: nowrap tw=0:`" > $LogFile"
     $Command1 = "robocopy /mir $frFolder $toFolder /np /unilog+:$LogFile /tee $simulate"
 	$Command1
+	""
+	# do the Robocopy:
     # iex $Command0
     # "" >> $LogFile
     # "$Command0; $Command1" >> $LogFile

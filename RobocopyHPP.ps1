@@ -9,37 +9,80 @@
 # G: Samsung M3
 # H: K16GB500
 
-"This Powershell script will use Robocopy to mirror my personal folders."
+""
+"Joseph, this Powershell script will use Robocopy to mirror your personal folders."
 [System.Console]::BackgroundColor = 'DarkCyan'
 [System.Console]::ForegroundColor = 'White'
-$input = Read-Host 'Do you want to backup (b), or mirror TO (T) portable drives (or simulate (t)),  or mirror FROM (F) (or simulate (f))?'
+""
+$reply = Read-Host "Do you want to backup (b), or mirror TO (T) portable drives (or simulate (t)),  or mirror FROM (F) (or simulate (f))? "
 [System.Console]::ResetColor()
+""
 
-$Folders = @(
+$backupFolder = "G:\Robocopy-backup-HPP"
+$FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
-  (0,"E:\DropboxFiles\Close","G:\Robocopy-backup-HPP\Close","H:\Close"),
-  (0,"E:\DropboxFiles\Copied","G:\Robocopy-backup-HPP\Copied","G:\Dr_Copied"),
-  (0,"E:\DropboxFiles\Further","G:\Robocopy-backup-HPP\Further","H:\Further"),
-  (0,"E:\DropboxFiles\Now","G:\Robocopy-backup-HPP\Now","H:\Now"),
-  (0,"E:\DropboxFiles\Photos","G:\Robocopy-backup-HPP\Photos","G:\Dr_Photos"),
-  (0,"E:\DropboxFiles\Pointure_23","G:\Robocopy-backup-HPP\Pointure_23","G:\Dr_Pointure_23"),
-  (0,"E:\Files","G:\Robocopy-backup-HPP\Files","G:\Files"),
+  (0,"E:\DropboxFiles\Close","$backupFolder\Close","H:\Close"),
+  (0,"E:\DropboxFiles\Copied","$backupFolder\Copied","G:\Dr_Copied"),
+  (0,"E:\DropboxFiles\Further","$backupFolder\Further","H:\Further"),
+  (1,"E:\DropboxFiles\Now","$backupFolder\Now","H:\Now"),
+  (1,"E:\DropboxFiles\Photos","$backupFolder\Photos","G:\Dr_Photos"),
+  (0,"E:\DropboxFiles\Pointure_23","$backupFolder\Pointure_23","G:\Dr_Pointure_23"),
+  (0,"E:\Files","$backupFolder\Files","G:\Files"),
   (0,0,0) # dummy row
   )
-$Changes = $PSCommandPath.TrimEnd("ps1")+"log"
-foreach ($Fpair in $Folders) {
-  if ( $Fpair[0] ) {
-    $IntFolder = $Fpair[1]; $IntFolder
-    $ExtFolder = $Fpair[2]; $ExtFolder
-    $LogFile = $ExtFolder+".log"; $LogFile
-    $Command0 = "`"vim: nowrap tw=0: hi`" > $LogFile"
-    $Command1 = "robocopy /mir $IntFolder $ExtFolder /np /unilog+:$LogFile /tee"
-    if ( $(Try { Test-Path $ExtFolder.trim() } Catch { $false }) ) {
-      iex $Command0
-      "" >> $LogFile
-      "$Command0; $Command1" >> $LogFile
-      iex $Command1
-    } else {$ExtFolder+" ain't there"}
+
+if ($reply -ceq "b") {"Okay, running backups to $backupFolder`n"}
+  elseif ($reply -ceq "T") {
+    [System.Console]::BackgroundColor = 'Blue'
+    [System.Console]::ForegroundColor = 'White'
+    ""
+    $replyCheck = Read-Host "You want to go ahead and mirror changes TO external drives? "
+    [System.Console]::ResetColor()
+    ""
+	if ( $replyCheck -ne "y" ) {exit}
+  } elseif ($reply -ceq "t") {"Okay, running simulation for `"mirror to external drives`"`n"}
+  elseif ($reply -ceq "F") {
+    [System.Console]::BackgroundColor = 'Yellow'
+    [System.Console]::ForegroundColor = 'DarkBlue'
+    ""
+    $replyCheck = Read-Host "You want to go ahead and mirror changes FROM external drives? "
+    [System.Console]::ResetColor()
+    ""
+	if ( $replyCheck -ne "y" ) {exit}
+  } elseif ($reply -ceq "f") {"Okay, running simulation for `"mirror from external drives`"`n"}
+
+# Prepare a file to log of all of the changes made:
+$ChangesLog = $PSCommandPath.TrimEnd("ps1")+"log"
+$ThisScript = $PSCommandPath.TrimStart($PSScriptRoot)
+"vim: nowrap tw=0:" > $ChangesLog
+"" >> $ChangesLog
+"Changes made by $ThisScript`:" >> $ChangesLog
+"" >> $ChangesLog
+
+foreach ($FolderControl in $FoldersArray) {
+  if ( $FolderControl[0] ) {
+    if ($reply -ceq "b") {
+      $frFolder = $FolderControl[1]
+      $toFolder = $FolderControl[2]
+	} elseif ($reply -match "^t$|^f$") {
+
+      $frFolder = $FolderControl[1]
+      $toFolder = $FolderControl[3]
+	}
+    $LogFile = $toFolder+".log"
+	$frFolder
+    $toFolder
+    $LogFile
+	""
+    $Command0 = "`"vim: nowrap tw=0:`" > $LogFile"
+    $Command1 = "robocopy /mir $frFolder $toFolder /np /unilog+:$LogFile /tee"
+    if ( $(Try { Test-Path $toFolder.trim() } Catch { $false }) ) {
+      # iex $Command0
+      # "" >> $LogFile
+      # "$Command0; $Command1" >> $LogFile
+      # iex $Command1
+    } else {$toFolder+" ain't there"}
   }
 }
-Write-Host "All done and logged individually, with all of the changes saved together to $Changes" -background darkcyan -foreground white
+""
+Write-Host "All done and logged individually, with all of the changes saved together to  $ChangesLog" -background darkcyan -foreground white

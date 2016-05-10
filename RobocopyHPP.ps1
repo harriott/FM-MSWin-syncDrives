@@ -32,6 +32,7 @@ $reply = Read-Host "Do you want to backup (b), or mirror TO (T) portable drives 
 [System.Console]::ResetColor()
 ""
 
+$simulate = ""
 if ($reply -ceq "b") {"Okay, running backups to $backupFolder`n"}
   elseif ($reply -ceq "T") {
     [System.Console]::BackgroundColor = 'Blue'
@@ -41,17 +42,21 @@ if ($reply -ceq "b") {"Okay, running backups to $backupFolder`n"}
     [System.Console]::ResetColor()
     ""
 	if ( $replyCheck -ne "y" ) {exit}
-  } elseif ($reply -ceq "t") {"Okay, running simulation for `"mirror to external drives`"`n"}
-  elseif ($reply -ceq "F") {
-    [System.Console]::BackgroundColor = 'Yellow'
-    [System.Console]::ForegroundColor = 'DarkBlue'
-    ""
-    $replyCheck = Read-Host "You want to go ahead and mirror changes FROM external drives? "
-    [System.Console]::ResetColor()
-    ""
-	if ( $replyCheck -ne "y" ) {exit}
-  } elseif ($reply -ceq "f") {"Okay, running simulation for `"mirror from external drives`"`n"}
-  else { exit }
+  } elseif ($reply -ceq "t") {
+	  "Okay, running simulation for `"mirror to external drives`"`n"
+	  $simulate = "/l"
+  } elseif ($reply -ceq "F") {
+      [System.Console]::BackgroundColor = 'Yellow'
+      [System.Console]::ForegroundColor = 'DarkBlue'
+      ""
+      $replyCheck = Read-Host "You want to go ahead and mirror changes FROM external drives? "
+      [System.Console]::ResetColor()
+      ""
+  	if ( $replyCheck -ne "y" ) {exit}
+  } elseif ($reply -ceq "f") {
+	  "Okay, running simulation for `"mirror from external drives`"`n"
+	  $simulate = "/l"
+  } else { exit }
 
 # Prepare a file to log all of the changes made:
 $ChangesLog = $PSCommandPath.TrimEnd("ps1")+"log"
@@ -81,7 +86,8 @@ foreach ($FolderControl in $FoldersArray) {
     $LogFile
 	""
     $Command0 = "`"vim: nowrap tw=0:`" > $LogFile"
-    $Command1 = "robocopy /mir $frFolder $toFolder /np /unilog+:$LogFile /tee"
+    $Command1 = "robocopy /mir $frFolder $toFolder /np /unilog+:$LogFile /tee $simulate"
+	$Command1
     # iex $Command0
     # "" >> $LogFile
     # "$Command0; $Command1" >> $LogFile

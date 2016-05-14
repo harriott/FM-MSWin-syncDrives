@@ -6,19 +6,19 @@
 # suffix these lines with /l to just list Robocopy's diagnosis without making any changes
 # ----------------------------------------------------------------------------------------------
 # E: MQ01ABF050
-# G: Samsung M3
-# H: K16GB500 = FAT
+# F: Samsung M3
+# G: K16GB500 = FAT
 
-$backupFolder = "G:\Robocopy-backup-HPP"
+$backupFolder = "F:\Robocopy-backup-HPP"
 $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
-  (1,"E:\DropboxFiles\Close","$backupFolder\Close","H:\Close"),
-  (1,"E:\DropboxFiles\Copied","$backupFolder\Copied","G:\Dr_Copied"),
-  (1,"E:\DropboxFiles\Further","$backupFolder\Further","H:\Further"),
-  (1,"E:\DropboxFiles\Now","$backupFolder\Now","H:\Now"),
-  (1,"E:\DropboxFiles\Photos","$backupFolder\Photos","G:\Dr_Photos"),
-  (1,"E:\DropboxFiles\Pointure_23","$backupFolder\Pointure_23","G:\Dr_Pointure_23"),
-  (1,"E:\Files","$backupFolder\Files","G:\Files"),
+  (1,"E:\DropboxFiles\Close","$backupFolder\Close","G:\Close"),
+  (1,"E:\DropboxFiles\Copied","$backupFolder\Copied","F:\Dr_Copied"),
+  (1,"E:\DropboxFiles\Further","$backupFolder\Further","G:\Further"),
+  (1,"E:\DropboxFiles\Now","$backupFolder\Now","G:\Now"),
+  (1,"E:\DropboxFiles\Photos","$backupFolder\Photos","F:\Dr_Photos"),
+  (1,"E:\DropboxFiles\Pointure_23","$backupFolder\Pointure_23","F:\Dr_Pointure_23"),
+  (1,"E:\Files","$backupFolder\Files","F:\Files"),
   (0,0,0) # dummy row
   )
 

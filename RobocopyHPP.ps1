@@ -1,6 +1,6 @@
 # vim: set tw=0: http://momentary.eu/
 
-# Joseph Harriott - Tue 10 May 2016
+# Joseph Harriott - Sat 14 May 2016
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
 # suffix these lines with /l to just list Robocopy's diagnosis without making any changes

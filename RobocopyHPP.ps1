@@ -1,6 +1,6 @@
 # vim: set tw=0: http://momentary.eu/
 
-# Joseph Harriott - Sun 15 May 2016
+# Joseph Harriott - Fri 20 May 2016
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
 # suffix these lines with /l to just list Robocopy's diagnosis without making any changes
@@ -12,12 +12,12 @@ $KT = "G:" # K16GB500 drive letter
 $backupFolder = "$SM3\Robocopy-backup-HPP"
 $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
-  (1,"E:\DropboxFiles\Close","$backupFolder\Close","$KT\Close"),
-  (1,"E:\DropboxFiles\Copied","$backupFolder\Copied","$SM3\Dr_Copied"),
-  (1,"E:\DropboxFiles\Further","$backupFolder\Further","$KT\Further"),
-  (1,"E:\DropboxFiles\Now","$backupFolder\Now","$KT\Now"),
-  (1,"E:\DropboxFiles\Photos","$backupFolder\Photos","$SM3\Dr_Photos"),
-  (1,"E:\DropboxFiles\Pointure_23","$backupFolder\Pointure_23","$SM3\Dr_Pointure_23"),
+  (1,"E:\Dropbox\Close","$backupFolder\Close","$KT\Close"),
+  (1,"E:\Dropbox\Copied","$backupFolder\Copied","$SM3\Dr_Copied"),
+  (1,"E:\Dropbox\Further","$backupFolder\Further","$KT\Further"),
+  (1,"E:\Dropbox\Now","$backupFolder\Now","$KT\Now"),
+  (1,"E:\Dropbox\Photos","$backupFolder\Photos","$SM3\Dr_Photos"),
+  (1,"E:\Dropbox\Pointure_23","$backupFolder\Pointure_23","$SM3\Dr_Pointure_23"),
   (1,"E:\Files","$backupFolder\Files","$SM3\Files"),
   (0,0,0) # dummy row
   )

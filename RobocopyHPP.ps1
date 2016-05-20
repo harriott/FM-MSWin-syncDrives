@@ -1,24 +1,24 @@
 # vim: set tw=0: http://momentary.eu/
 
-# Joseph Harriott - Sat 14 May 2016
+# Joseph Harriott - Sun 15 May 2016
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
 # suffix these lines with /l to just list Robocopy's diagnosis without making any changes
 # ----------------------------------------------------------------------------------------------
 # E: MQ01ABF050
-# F: Samsung M3
-# G: K16GB500 = FAT
 
-$backupFolder = "F:\Robocopy-backup-HPP"
+$SM3 = "F:" # Samsung M3 drive letter
+$KT = "G:" # K16GB500 drive letter
+$backupFolder = "$SM3\Robocopy-backup-HPP"
 $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
-  (1,"E:\DropboxFiles\Close","$backupFolder\Close","G:\Close"),
-  (1,"E:\DropboxFiles\Copied","$backupFolder\Copied","F:\Dr_Copied"),
-  (1,"E:\DropboxFiles\Further","$backupFolder\Further","G:\Further"),
-  (1,"E:\DropboxFiles\Now","$backupFolder\Now","G:\Now"),
-  (1,"E:\DropboxFiles\Photos","$backupFolder\Photos","F:\Dr_Photos"),
-  (1,"E:\DropboxFiles\Pointure_23","$backupFolder\Pointure_23","F:\Dr_Pointure_23"),
-  (1,"E:\Files","$backupFolder\Files","F:\Files"),
+  (1,"E:\DropboxFiles\Close","$backupFolder\Close","$KT\Close"),
+  (1,"E:\DropboxFiles\Copied","$backupFolder\Copied","$SM3\Dr_Copied"),
+  (1,"E:\DropboxFiles\Further","$backupFolder\Further","$KT\Further"),
+  (1,"E:\DropboxFiles\Now","$backupFolder\Now","$KT\Now"),
+  (1,"E:\DropboxFiles\Photos","$backupFolder\Photos","$SM3\Dr_Photos"),
+  (1,"E:\DropboxFiles\Pointure_23","$backupFolder\Pointure_23","$SM3\Dr_Pointure_23"),
+  (1,"E:\Files","$backupFolder\Files","$SM3\Files"),
   (0,0,0) # dummy row
   )
 
@@ -80,7 +80,7 @@ foreach ($FolderControl in $FoldersArray) {
 	} else {
       if ( ! $(Try { Test-Path $FolderControl[3].trim() } Catch { $false }) ) {
 		  "Sorry, "+$FolderControl[3]+"  ain't there.`n"; continue }
-	  if ( $FolderControl[3] -match "^H" ) { $FAT = " /fft" } else { $FAT ="" }
+	  if ( $FolderControl[3] -match "^$KT" ) { $FAT = " /fft" } else { $FAT ="" }
       if ($reply -eq "t") {
         $frFolder = $FolderControl[1]
         $toFolder = $FolderControl[3]

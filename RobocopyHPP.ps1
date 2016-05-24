@@ -1,6 +1,6 @@
 # vim: set tw=0: http://momentary.eu/
 
-# Joseph Harriott - Fri 20 May 2016
+# Joseph Harriott - Tue 24 May 2016
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
 # suffix these lines with /l to just list Robocopy's diagnosis without making any changes
@@ -14,11 +14,14 @@ $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
   (1,"E:\Dropbox\Close","$backupFolder\Close","$KT\Close"),
   (1,"E:\Dropbox\Copied","$backupFolder\Copied","$SM3\Dr_Copied"),
+  (1,"E:\Dropbox\F+F","$backupFolder\F+F","$SM3\Dr_F+F"),
   (1,"E:\Dropbox\Further","$backupFolder\Further","$KT\Further"),
   (1,"E:\Dropbox\Now","$backupFolder\Now","$KT\Now"),
   (1,"E:\Dropbox\Photos","$backupFolder\Photos","$SM3\Dr_Photos"),
   (1,"E:\Dropbox\Pointure_23","$backupFolder\Pointure_23","$SM3\Dr_Pointure_23"),
-  (1,"E:\Files","$backupFolder\Files","$SM3\Files"),
+  (1,"E:\Dropbox\Stack","$backupFolder\Stack","$SM3\Dr_Stack"),
+  (1,"E:\IT_Copied","$backupFolder\IT_Copied","$SM3\IT_Copied"),
+  (1,"E:\More","$backupFolder\More","$SM3\More"),
   (0,0,0) # dummy row
   )
 

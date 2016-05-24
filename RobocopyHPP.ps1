@@ -1,6 +1,6 @@
 # vim: set tw=0: http://momentary.eu/
 
-# Joseph Harriott - Tue 24 May 2016
+# Joseph Harriott - Wed 25 May 2016
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
 # suffix these lines with /l to just list Robocopy's diagnosis without making any changes
@@ -18,7 +18,7 @@ $FoldersArray = @(
   (1,"E:\Dropbox\Further","$backupFolder\Further","$KT\Further"),
   (1,"E:\Dropbox\Now","$backupFolder\Now","$KT\Now"),
   (1,"E:\Dropbox\Photos","$backupFolder\Photos","$SM3\Dr_Photos"),
-  (1,"E:\Dropbox\Pointure_23","$backupFolder\Pointure_23","$SM3\Dr_Pointure_23"),
+  (1,"E:\Dropbox\Pointure23","$backupFolder\Pointure23","$SM3\DrPointure23"),
   (1,"E:\Dropbox\Stack","$backupFolder\Stack","$SM3\Dr_Stack"),
   (1,"E:\IT_Copied","$backupFolder\IT_Copied","$SM3\IT_Copied"),
   (1,"E:\More","$backupFolder\More","$SM3\More"),

@@ -1,6 +1,6 @@
 # vim: set tw=0: http://momentary.eu/
 
-# Joseph Harriott - Wed 25 May 2016
+# Joseph Harriott - Mon 12 Sep 2016
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
 # suffix these lines with /l to just list Robocopy's diagnosis without making any changes
@@ -12,17 +12,24 @@ $KT = "G:" # K16GB500 drive letter
 $backupFolder = "$SM3\Robocopy-backup-HPP"
 $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
-  (1,"E:\Dropbox\Close","$backupFolder\Close","$KT\Close"),
-  (1,"E:\Dropbox\Copied","$backupFolder\Copied","$SM3\Dr_Copied"),
-  (1,"E:\Dropbox\F+F","$backupFolder\F+F","$SM3\Dr_F+F"),
-  (1,"E:\Dropbox\Further","$backupFolder\Further","$KT\Further"),
-  (1,"E:\Dropbox\Now","$backupFolder\Now","$KT\Now"),
-  (1,"E:\Dropbox\Photos","$backupFolder\Photos","$SM3\Dr_Photos"),
-  (1,"E:\Dropbox\Pointure23","$backupFolder\Pointure23","$SM3\DrPointure23"),
-  (1,"E:\Dropbox\Stack","$backupFolder\Stack","$SM3\Dr_Stack"),
-  (1,"E:\IT_Copied","$backupFolder\IT_Copied","$SM3\IT_Copied"),
-  (1,"E:\More","$backupFolder\More","$SM3\More"),
-  (0,0,0) # dummy row
+  #   gVim  Tabularize/,/l0l0l0  then view in a larger window
+  #
+  (1,"E:\Dropbox\Copied"               ,"$backupFolder\Copied"               ,"$Sm3\Sync\Copied")               ,
+  (1,"E:\Dropbox\Copied-Music-toPlay"  ,"$backupFolder\Copied-Music-toPlay"  ,"$Sm3\Sync\Copied-Music-toPlay")  ,
+  (1,"E:\Dropbox\Copied-OutThere-Audio","$backupFolder\Copied-OutThere-Audio","$Sm3\Sync\Copied-OutThere-Audio"),
+  (1,"E:\Dropbox\Copied-UK-Audio"      ,"$backupFolder\Copied-UK-Audio"      ,"$Sm3\Sync\Copied-UK-Audio")      ,
+  (1,"E:\Dropbox\JH\Close"             ,"$backupFolder\Close"                ,"$KT\Close")                      ,
+  (1,"E:\Dropbox\JH\F+F"               ,"$backupFolder\F+F"                  ,"$Sm3\Sync\JH-F+F")               ,
+  (1,"E:\Dropbox\JH\Further"           ,"$backupFolder\Further"              ,"$KT\Further")                    ,
+  (1,"E:\Dropbox\JH\Now"               ,"$backupFolder\Now"                  ,"$KT\Now")                        ,
+  (1,"E:\Dropbox\JH\Pointure23"        ,"$backupFolder\Pointure23"           ,"$Sm3\Sync\JH-Pointure23")        ,
+  (1,"E:\Dropbox\JH\Stack"             ,"$backupFolder\Stack"                ,"$Sm3\Sync\JH-Stack")             ,
+  (1,"E:\Dropbox\JH\Work"              ,"$backupFolder\Work"                 ,"$KT\Work")                       ,
+  (1,"E:\Dropbox\Photos"               ,"$backupFolder\Photos"               ,"$Sm3\Sync\Photos")               ,
+  (1,"E:\IT-Copied"                    ,"$backupFolder\IT-Copied"            ,"$Sm3\Sync\IT-Copied")            ,
+  (1,"E:\IT-DebianBased-Copied"        ,"$backupFolder\IT-DebianBased-Copied","$Sm3\Sync\IT-DebianBased-Copied"),
+  (1,"E:\More"                         ,"$backupFolder\More"                 ,"$Sm3\Sync\More")                 ,
+  (0,0                                 ,0                                    ,0) # dummy row
   )
 
 # Dialogue with myself:

@@ -5,30 +5,30 @@
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
 # suffix these lines with /l to just list Robocopy's diagnosis without making any changes
 # ----------------------------------------------------------------------------------------------
-# E: MQ01ABF050
 
-$SM3 = "F:" # Samsung M3 drive letter
-$KT = "G:" # K16GB500 drive letter
-$backupFolder = "$SM3\Robocopy-backup-HPP"
+# E: MQ01ABF050
+# F: Samsung M3 drive letter
+# G K16GB500 drive letter
+$backupFolder = "F:\Robocopy-backup-HPP"
 $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
   #   gVim  Tabularize/,/l0l0l0  then view in a larger window
   #
-  (1,"E:\Dropbox\Copied"               ,"$backupFolder\Copied"               ,"$Sm3\Sync\Copied")               ,
-  (1,"E:\Dropbox\Copied-Music-toPlay"  ,"$backupFolder\Copied-Music-toPlay"  ,"$Sm3\Sync\Copied-Music-toPlay")  ,
-  (1,"E:\Dropbox\Copied-OutThere-Audio","$backupFolder\Copied-OutThere-Audio","$Sm3\Sync\Copied-OutThere-Audio"),
-  (1,"E:\Dropbox\Copied-UK-Audio"      ,"$backupFolder\Copied-UK-Audio"      ,"$Sm3\Sync\Copied-UK-Audio")      ,
-  (1,"E:\Dropbox\JH\Close"             ,"$backupFolder\Close"                ,"$KT\Close")                      ,
-  (1,"E:\Dropbox\JH\F+F"               ,"$backupFolder\F+F"                  ,"$Sm3\Sync\JH-F+F")               ,
-  (1,"E:\Dropbox\JH\Further"           ,"$backupFolder\Further"              ,"$KT\Further")                    ,
-  (1,"E:\Dropbox\JH\Now"               ,"$backupFolder\Now"                  ,"$KT\Now")                        ,
-  (1,"E:\Dropbox\JH\Pointure23"        ,"$backupFolder\Pointure23"           ,"$Sm3\Sync\JH-Pointure23")        ,
-  (1,"E:\Dropbox\JH\Stack"             ,"$backupFolder\Stack"                ,"$Sm3\Sync\JH-Stack")             ,
-  (1,"E:\Dropbox\JH\Work"              ,"$backupFolder\Work"                 ,"$KT\Work")                       ,
-  (1,"E:\Dropbox\Photos"               ,"$backupFolder\Photos"               ,"$Sm3\Sync\Photos")               ,
-  (1,"E:\IT-Copied"                    ,"$backupFolder\IT-Copied"            ,"$Sm3\Sync\IT-Copied")            ,
-  (1,"E:\IT-DebianBased-Copied"        ,"$backupFolder\IT-DebianBased-Copied","$Sm3\Sync\IT-DebianBased-Copied"),
-  (1,"E:\More"                         ,"$backupFolder\More"                 ,"$Sm3\Sync\More")                 ,
+  (0,"E:\Dropbox\Copied"               ,"$backupFolder\Copied"               ,"F:\Sync\Copied")               ,
+  (0,"E:\Dropbox\Copied-Music-toPlay"  ,"$backupFolder\Copied-Music-toPlay"  ,"F:\Sync\Copied-Music-toPlay")  ,
+  (0,"E:\Dropbox\Copied-OutThere-Audio","$backupFolder\Copied-OutThere-Audio","F:\Sync\Copied-OutThere-Audio"),
+  (0,"E:\Dropbox\Copied-UK-Audio"      ,"$backupFolder\Copied-UK-Audio"      ,"F:\Sync\Copied-UK-Audio")      ,
+  (0,"E:\Dropbox\JH\Close"             ,"$backupFolder\Close"                ,"G:\Close")                      ,
+  (0,"E:\Dropbox\JH\F+F"               ,"$backupFolder\F+F"                  ,"F:\Sync\JH-F+F")               ,
+  (0,"E:\Dropbox\JH\Further"           ,"$backupFolder\Further"              ,"G:\Further")                    ,
+  (0,"E:\Dropbox\JH\Now"               ,"$backupFolder\Now"                  ,"G:\Now")                        ,
+  (0,"E:\Dropbox\JH\Pointure23"        ,"$backupFolder\Pointure23"           ,"F:\Sync\JH-Pointure23")        ,
+  (0,"E:\Dropbox\JH\Stack"             ,"$backupFolder\Stack"                ,"F:\Sync\JH-Stack")             ,
+  (0,"E:\Dropbox\JH\Work"              ,"$backupFolder\Work"                 ,"G:\Work")                       ,
+  (0,"E:\Dropbox\Photos"               ,"$backupFolder\Photos"               ,"F:\Sync\Photos")               ,
+  (1,"E:\IT-Copied"                    ,"$backupFolder\IT-Copied"            ,"F:\IT-Copied")            ,
+  (1,"E:\IT-DebianBased-Copied"        ,"$backupFolder\IT-DebianBased-Copied","F:\IT-DebianBased-Copied"),
+  (1,"E:\More"                         ,"$backupFolder\More"                 ,"F:\More")                 ,
   (0,0                                 ,0                                    ,0) # dummy row
   )
 
@@ -90,7 +90,7 @@ foreach ($FolderControl in $FoldersArray) {
 	} else {
       if ( ! $(Try { Test-Path $FolderControl[3].trim() } Catch { $false }) ) {
 		  "Sorry, "+$FolderControl[3]+"  ain't there.`n"; continue }
-	  if ( $FolderControl[3] -match "^$KT" ) { $FAT = " /fft" } else { $FAT ="" }
+	  if ( $FolderControl[3] -match "^G:" ) { $FAT = " /fft" } else { $FAT ="" }
       if ($reply -eq "t") {
         $frFolder = $FolderControl[1]
         $toFolder = $FolderControl[3]

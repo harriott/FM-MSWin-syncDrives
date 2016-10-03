@@ -1,14 +1,14 @@
 # vim: set tw=0: http://momentary.eu/
 
-# Joseph Harriott - Mon 12 Sep 2016
+# Joseph Harriott - Mon 03 Oct 2016
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
 # suffix these lines with /l to just list Robocopy's diagnosis without making any changes
 # ----------------------------------------------------------------------------------------------
 
 # E: MQ01ABF050
-# F: Samsung M3 drive letter
-# G K16GB500 drive letter
+# F: Samsung M3
+# G: K16GB500
 $backupFolder = "F:\Robocopy-backup-HPP"
 $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0

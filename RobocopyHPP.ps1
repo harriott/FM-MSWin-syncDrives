@@ -1,6 +1,6 @@
 # vim: set tw=0: http://momentary.eu/
 
-# Joseph Harriott - Mon 03 Oct 2016
+# Joseph Harriott - Thu 13 Oct 2016
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
 # suffix these lines with /l to just list Robocopy's diagnosis without making any changes
@@ -18,17 +18,17 @@ $FoldersArray = @(
   (1,"E:\Dropbox\Copied-Music-toPlay"  ,"$backupFolder\Copied-Music-toPlay"  ,"F:\Sync\Copied-Music-toPlay")  ,
   (1,"E:\Dropbox\Copied-OutThere-Audio","$backupFolder\Copied-OutThere-Audio","F:\Sync\Copied-OutThere-Audio"),
   (1,"E:\Dropbox\Copied-UK-Audio"      ,"$backupFolder\Copied-UK-Audio"      ,"F:\Sync\Copied-UK-Audio")      ,
-  (1,"E:\Dropbox\JH\Close"             ,"$backupFolder\Close"                ,"G:\Close")                      ,
+  (1,"E:\Dropbox\JH\Close"             ,"$backupFolder\Close"                ,"G:\Close")                     ,
   (1,"E:\Dropbox\JH\F+F"               ,"$backupFolder\F+F"                  ,"F:\Sync\JH-F+F")               ,
-  (1,"E:\Dropbox\JH\Further"           ,"$backupFolder\Further"              ,"G:\Further")                    ,
-  (1,"E:\Dropbox\JH\Now"               ,"$backupFolder\Now"                  ,"G:\Now")                        ,
-  (1,"E:\Dropbox\JH\Pointure23"        ,"$backupFolder\Pointure23"           ,"F:\Sync\JH-Pointure23")        ,
+  (1,"E:\Dropbox\JH\Further"           ,"$backupFolder\Further"              ,"G:\Further")                   ,
+  (1,"E:\Dropbox\JH\Now"               ,"$backupFolder\Now"                  ,"G:\Now")                       ,
+  (1,"E:\Dropbox\JH\Theatre"           ,"$backupFolder\Theatre"              ,"F:\Sync\JH-Theatre")           ,
   (1,"E:\Dropbox\JH\Stack"             ,"$backupFolder\Stack"                ,"F:\Sync\JH-Stack")             ,
-  (1,"E:\Dropbox\JH\Work"              ,"$backupFolder\Work"                 ,"G:\Work")                       ,
+  (1,"E:\Dropbox\JH\Work"              ,"$backupFolder\Work"                 ,"G:\Work")                      ,
   (1,"E:\Dropbox\Photos"               ,"$backupFolder\Photos"               ,"F:\Sync\Photos")               ,
-  (1,"E:\IT-Copied"                    ,"$backupFolder\IT-Copied"            ,"F:Sync\IT-Copied")            ,
-  (1,"E:\IT-DebianBased-Copied"        ,"$backupFolder\IT-DebianBased-Copied","F:Sync\IT-DebianBased-Copied"),
-  (1,"E:\More"                         ,"$backupFolder\More"                 ,"F:Sync\More")                 ,
+  (1,"E:\IT-Copied"                    ,"$backupFolder\IT-Copied"            ,"F:Sync\IT-Copied")             ,
+  (1,"E:\IT-DebianBased-Copied"        ,"$backupFolder\IT-DebianBased-Copied","F:Sync\IT-DebianBased-Copied") ,
+  (1,"E:\More"                         ,"$backupFolder\More"                 ,"F:Sync\More")                  ,
   (0,0                                 ,0                                    ,0) # dummy row
   )
 

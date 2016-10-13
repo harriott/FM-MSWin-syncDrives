@@ -1,4 +1,4 @@
-# vim: set tw=0: http://momentary.eu/
+# vim: set et tw=0:  http://momentary.eu/
 
 # Joseph Harriott - Thu 13 Oct 2016
 # Sync/backup my personal files to/from HPP:11-n012na
@@ -14,22 +14,22 @@ $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
   #   gVim  Tabularize/,/l0l0l0  then view in a larger window
   #
-  (1,"E:\Dropbox\Copied"               ,"$backupFolder\Copied"               ,"F:\Sync\Copied")               ,
-  (1,"E:\Dropbox\Copied-Music-toPlay"  ,"$backupFolder\Copied-Music-toPlay"  ,"F:\Sync\Copied-Music-toPlay")  ,
-  (1,"E:\Dropbox\Copied-OutThere-Audio","$backupFolder\Copied-OutThere-Audio","F:\Sync\Copied-OutThere-Audio"),
-  (1,"E:\Dropbox\Copied-UK-Audio"      ,"$backupFolder\Copied-UK-Audio"      ,"F:\Sync\Copied-UK-Audio")      ,
-  (1,"E:\Dropbox\JH\Close"             ,"$backupFolder\Close"                ,"G:\Close")                     ,
-  (1,"E:\Dropbox\JH\F+F"               ,"$backupFolder\F+F"                  ,"F:\Sync\JH-F+F")               ,
-  (1,"E:\Dropbox\JH\Further"           ,"$backupFolder\Further"              ,"G:\Further")                   ,
-  (1,"E:\Dropbox\JH\Now"               ,"$backupFolder\Now"                  ,"G:\Now")                       ,
-  (1,"E:\Dropbox\JH\Theatre"           ,"$backupFolder\Theatre"              ,"F:\Sync\JH-Theatre")           ,
-  (1,"E:\Dropbox\JH\Stack"             ,"$backupFolder\Stack"                ,"F:\Sync\JH-Stack")             ,
-  (1,"E:\Dropbox\JH\Work"              ,"$backupFolder\Work"                 ,"G:\Work")                      ,
-  (1,"E:\Dropbox\Photos"               ,"$backupFolder\Photos"               ,"F:\Sync\Photos")               ,
-  (1,"E:\IT-Copied"                    ,"$backupFolder\IT-Copied"            ,"F:Sync\IT-Copied")             ,
-  (1,"E:\IT-DebianBased-Copied"        ,"$backupFolder\IT-DebianBased-Copied","F:Sync\IT-DebianBased-Copied") ,
-  (1,"E:\More"                         ,"$backupFolder\More"                 ,"F:Sync\More")                  ,
-  (0,0                                 ,0                                    ,0) # dummy row
+  (1,"E:\Dropbox\Copied"               ,"$backupFolder\Dr-Copied"               ,"F:\Sync\Copied")               ,
+  (1,"E:\Dropbox\Copied-Music-toPlay"  ,"$backupFolder\Dr-Copied-Music-toPlay"  ,"F:\Sync\Copied-Music-toPlay")  ,
+  (1,"E:\Dropbox\Copied-OutThere-Audio","$backupFolder\Dr-Copied-OutThere-Audio","F:\Sync\Copied-OutThere-Audio"),
+  (1,"E:\Dropbox\Copied-UK-Audio"      ,"$backupFolder\Dr-Copied-UK-Audio"      ,"F:\Sync\Copied-UK-Audio")      ,
+  (1,"E:\Dropbox\JH\Close"             ,"$backupFolder\Dr-JH-Close"             ,"G:\Close")                     ,
+  (1,"E:\Dropbox\JH\F+F"               ,"$backupFolder\Dr-JH-F+F"               ,"F:\Sync\JH-F+F")               ,
+  (1,"E:\Dropbox\JH\Further"           ,"$backupFolder\Dr-JH-Further"           ,"G:\Further")                   ,
+  (1,"E:\Dropbox\JH\Now"               ,"$backupFolder\Dr-JH-Now"               ,"G:\Now")                       ,
+  (1,"E:\Dropbox\JH\Theatre"           ,"$backupFolder\Dr-JH-Theatre"           ,"F:\Sync\JH-Theatre")           ,
+  (1,"E:\Dropbox\JH\Stack"             ,"$backupFolder\Dr-JH-Stack"             ,"F:\Sync\JH-Stack")             ,
+  (1,"E:\Dropbox\JH\Work"              ,"$backupFolder\Dr-JH-Work"              ,"G:\Work")                      ,
+  (1,"E:\Dropbox\Photos"               ,"$backupFolder\Dr-Photos"               ,"F:\Sync\Photos")               ,
+  (1,"E:\IT-Copied"                    ,"$backupFolder\IT-Copied"               ,"F:Sync\IT-Copied")             ,
+  (1,"E:\IT-DebianBased-Copied"        ,"$backupFolder\IT-DebianBased-Copied"   ,"F:Sync\IT-DebianBased-Copied") ,
+  (1,"E:\More"                         ,"$backupFolder\More"                    ,"F:Sync\More")                  ,
+  (0,0                                 ,0                                       ,0) # dummy row
   )
 
 # Dialogue with myself:
@@ -51,10 +51,10 @@ if ($reply -ceq "b") {"Okay, running backups to $backupFolder`n"}
     $replyCheck = Read-Host "You want to go ahead and mirror changes TO external drives? "
     [System.Console]::ResetColor()
     ""
-	if ( $replyCheck -ne "y" ) {exit}
+    if ( $replyCheck -ne "y" ) {exit}
   } elseif ($reply -ceq "t") {
-	  "Okay, running simulation for `"mirror to external drives`"`n"
-	  $simulate = " /l"
+      "Okay, running simulation for `"mirror to external drives`"`n"
+      $simulate = " /l"
   } elseif ($reply -ceq "F") {
       [System.Console]::BackgroundColor = 'Yellow'
       [System.Console]::ForegroundColor = 'DarkBlue'
@@ -62,10 +62,10 @@ if ($reply -ceq "b") {"Okay, running backups to $backupFolder`n"}
       $replyCheck = Read-Host "You want to go ahead and mirror changes FROM external drives? "
       [System.Console]::ResetColor()
       ""
-  	if ( $replyCheck -ne "y" ) {exit}
+    if ( $replyCheck -ne "y" ) {exit}
   } elseif ($reply -ceq "f") {
-	  "Okay, running simulation for `"mirror from external drives`"`n"
-	  $simulate = " /l"
+      "Okay, running simulation for `"mirror from external drives`"`n"
+      $simulate = " /l"
   } else { exit }
 
 # Prepare a file to log all of the changes made:
@@ -80,45 +80,56 @@ if ( $simulate ) { $simulated = " (SIMULATED)" } else { $simulated ="" }
 foreach ($FolderControl in $FoldersArray) {
   # check that this folder is wanted:
   if ( $FolderControl[0] ) {
-	# prepare the from & to folders:
+    # prepare the from & to folders:
+    $AintThere = ""
     if ($reply -ceq "b") {
       $frFolder = $FolderControl[1]
       $toFolder = $FolderControl[2]
-      if ( ! $(Try { Test-Path $toFolder.trim() } Catch { $false }) ) {
-		  "Sorry, $toFolder  ain't there.`n"; continue }
+      if ( ! $(Try { Test-Path $toFolder.trim() } Catch { $false }) ) { $AintThere = "Sorry, $toFolder  ain't there." }
       $LogFile = $toFolder+".log"
-	} else {
-      if ( ! $(Try { Test-Path $FolderControl[3].trim() } Catch { $false }) ) {
-		  "Sorry, "+$FolderControl[3]+"  ain't there.`n"; continue }
-	  if ( $FolderControl[3] -match "^G:" ) { $FAT = " /fft" } else { $FAT ="" }
+    } else {
+      $FolderControl3 = $FolderControl[3]
+      if ( ! $(Try { Test-Path $FolderControl3.trim() } Catch { $false }) ) {
+          $AintThere = "Sorry, $FolderControl3  ain't there." }
+      if ( $FolderControl3 -match "^G:" ) { $FAT = " /fft" } else { $FAT ="" }
       if ($reply -eq "t") {
         $frFolder = $FolderControl[1]
-        $toFolder = $FolderControl[3]
+        $toFolder = $FolderControl3
         $LogFile = $toFolder+"_fromHPP.log"
-	  } else {
-        $frFolder = $FolderControl[3]
+      } else {
+        $frFolder = $FolderControl3
         $toFolder = $FolderControl[1]
         $LogFile = $frFolder+"_toHPP.log"
-	  }
-	}
-	# ready to go ahead, prepare:
-	$frFolder
+      }
+    }
+    # ready to go ahead, prepare:
+    $frFolder
     $toFolder
     $LogFile
     $Command0 = "`"vim: nowrap tw=0:`" > $LogFile"
-    $Command1 = "robocopy /mir $frFolder $toFolder /np /unilog+:$LogFile /tee"+$simulate+$FAT
-	$Command1
-	# do the Robocopy:
+    # do the Robocopy:
     iex $Command0
     "" >> $LogFile
-    "$Command0; $Command1" >> $LogFile
-    iex $Command1
-	# log the changes:
-	"" >> $ChangesLog
-	$Command1 >> $ChangesLog
-	"logging any changes to $ChangesLog"
-	""
-    gc $LogFile | select-string '    New File|    Newer|    Older|`*EXTRA File|  New Dir|`*EXTRA Dir' >> $ChangesLog
+    if ($AintThere) {
+      [System.Console]::ForegroundColor = 'Yellow'
+      $AintThere
+      [System.Console]::ResetColor()
+      ""
+      "$AintThere" >> $LogFile
+    } else {
+      $Command1 = "robocopy /mir $frFolder $toFolder /np /unilog+:$LogFile /tee"+$simulate+$FAT
+      [System.Console]::ForegroundColor = 'Yellow'
+      $Command1
+      [System.Console]::ResetColor()
+      "$Command1" >> $LogFile
+      iex $Command1 # Comment this line to disable the file copying
+      # log the changes:
+      "" >> $ChangesLog
+      $Command1 >> $ChangesLog
+      "logging any changes to $ChangesLog"
+      ""
+      gc $LogFile | select-string '    New File|    Newer|    Older|`*EXTRA File|  New Dir|`*EXTRA Dir' >> $ChangesLog
+    }
   }
 }
 ""

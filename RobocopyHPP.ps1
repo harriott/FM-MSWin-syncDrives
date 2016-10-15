@@ -105,18 +105,18 @@ foreach ($FolderControl in $FoldersArray) {
     # ready to go ahead, prepare:
     $frFolder
     $toFolder
-    $LogFile
-    $Command0 = "`"vim: nowrap tw=0:`" > $LogFile"
     # do the Robocopy:
-    iex $Command0
-    "" >> $LogFile
     if ($AintThere) {
       [System.Console]::ForegroundColor = 'Yellow'
       $AintThere
       [System.Console]::ResetColor()
       ""
-      "$AintThere" >> $LogFile
+      "" >> $ChangesLog
+      "$AintThere" >> $ChangesLog
     } else {
+      $LogFile
+      "vim: nowrap tw=0:" > $LogFile
+      "" >> $LogFile
       $Command1 = "robocopy /mir $frFolder $toFolder /np /unilog+:$LogFile /tee"+$simulate+$FAT
       [System.Console]::ForegroundColor = 'Yellow'
       $Command1

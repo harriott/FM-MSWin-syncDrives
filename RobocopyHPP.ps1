@@ -1,6 +1,6 @@
 # vim: set et tw=0:  http://momentary.eu/
 
-# Joseph Harriott - Thu 13 Oct 2016
+# Joseph Harriott - Wed 02 Nov 2016
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
 # suffix these lines with /l to just list Robocopy's diagnosis without making any changes
@@ -18,13 +18,13 @@ $FoldersArray = @(
   (1,"E:\Dropbox\Copied-Music-toPlay"  ,"$backupFolder\Dr-Copied-Music-toPlay"  ,"F:\Sync\Copied-Music-toPlay")  ,
   (1,"E:\Dropbox\Copied-OutThere-Audio","$backupFolder\Dr-Copied-OutThere-Audio","F:\Sync\Copied-OutThere-Audio"),
   (1,"E:\Dropbox\Copied-UK-Audio"      ,"$backupFolder\Dr-Copied-UK-Audio"      ,"F:\Sync\Copied-UK-Audio")      ,
-  (1,"E:\Dropbox\JH\Close"             ,"$backupFolder\Dr-JH-Close"             ,"G:\Close")                     ,
-  (1,"E:\Dropbox\JH\F+F"               ,"$backupFolder\Dr-JH-F+F"               ,"F:\Sync\JH-F+F")               ,
-  (1,"E:\Dropbox\JH\Further"           ,"$backupFolder\Dr-JH-Further"           ,"G:\Further")                   ,
-  (1,"E:\Dropbox\JH\Now"               ,"$backupFolder\Dr-JH-Now"               ,"G:\Now")                       ,
-  (1,"E:\Dropbox\JH\Theatre"           ,"$backupFolder\Dr-JH-Theatre"           ,"F:\Sync\JH-Theatre")           ,
-  (1,"E:\Dropbox\JH\Stack"             ,"$backupFolder\Dr-JH-Stack"             ,"F:\Sync\JH-Stack")             ,
-  (1,"E:\Dropbox\JH\Work"              ,"$backupFolder\Dr-JH-Work"              ,"G:\Work")                      ,
+  (1,"E:\Dropbox\JH\d-F+F"             ,"$backupFolder\Dr-JH-d-F+F"             ,"F:\Sync\JH-d-F+F")             ,
+  (1,"E:\Dropbox\JH\d-Stack"           ,"$backupFolder\Dr-JH-d-Stack"           ,"F:\d-Sync\JH-d-Stack")         ,
+  (1,"E:\Dropbox\JH\d-Theatre"         ,"$backupFolder\Dr-JH-d-Theatre"         ,"F:\Sync\JH-d-Theatre")         ,
+  (1,"E:\Dropbox\JH\k-Close"           ,"$backupFolder\Dr-JH-k-Close"           ,"G:\k-Close")                   ,
+  (1,"E:\Dropbox\JH\k-Further"         ,"$backupFolder\Dr-JH-k-Further"         ,"G:\k-Further")                 ,
+  (1,"E:\Dropbox\JH\k-Now"             ,"$backupFolder\Dr-JH-k-Now"             ,"G:\k-Now")                     ,
+  (1,"E:\Dropbox\JH\k-Work"            ,"$backupFolder\Dr-JH-k-Work"            ,"G:\k-Work")                    ,
   (1,"E:\Dropbox\Photos"               ,"$backupFolder\Dr-Photos"               ,"F:\Sync\Photos")               ,
   (1,"E:\IT-Copied"                    ,"$backupFolder\IT-Copied"               ,"F:Sync\IT-Copied")             ,
   (1,"E:\IT-DebianBased-Copied"        ,"$backupFolder\IT-DebianBased-Copied"   ,"F:Sync\IT-DebianBased-Copied") ,

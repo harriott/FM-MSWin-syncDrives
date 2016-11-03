@@ -1,6 +1,6 @@
 # vim: set et tw=0:  http://momentary.eu/
 
-# Joseph Harriott - Wed 02 Nov 2016
+# Joseph Harriott - Thu 03 Nov 2016
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
 # suffix these lines with /l to just list Robocopy's diagnosis without making any changes
@@ -14,21 +14,21 @@ $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
   #   gVim  Tabularize/,/l0l0l0  then view in a larger window
   #
-  (1,"E:\Dropbox\Copied"               ,"$backupFolder\Dr-Copied"               ,"F:\Sync\Copied")               ,
-  (1,"E:\Dropbox\Copied-Music-toPlay"  ,"$backupFolder\Dr-Copied-Music-toPlay"  ,"F:\Sync\Copied-Music-toPlay")  ,
-  (1,"E:\Dropbox\Copied-OutThere-Audio","$backupFolder\Dr-Copied-OutThere-Audio","F:\Sync\Copied-OutThere-Audio"),
-  (1,"E:\Dropbox\Copied-UK-Audio"      ,"$backupFolder\Dr-Copied-UK-Audio"      ,"F:\Sync\Copied-UK-Audio")      ,
-  (1,"E:\Dropbox\JH\d-F+F"             ,"$backupFolder\Dr-JH-d-F+F"             ,"F:\Sync\JH-d-F+F")             ,
-  (1,"E:\Dropbox\JH\d-Stack"           ,"$backupFolder\Dr-JH-d-Stack"           ,"F:\d-Sync\JH-d-Stack")         ,
-  (1,"E:\Dropbox\JH\d-Theatre"         ,"$backupFolder\Dr-JH-d-Theatre"         ,"F:\Sync\JH-d-Theatre")         ,
+  (0,"E:\Dropbox\Copied"               ,"$backupFolder\Dr-Copied"               ,"F:\Sync\Dr-Copied")               ,
+  (0,"E:\Dropbox\Copied-Music-toPlay"  ,"$backupFolder\Dr-Copied-Music-toPlay"  ,"F:\Sync\Dr-Copied-Music-toPlay")  ,
+  (0,"E:\Dropbox\Copied-OutThere-Audio","$backupFolder\Dr-Copied-OutThere-Audio","F:\Sync\Dr-Copied-OutThere-Audio"),
+  (0,"E:\Dropbox\Copied-UK-Audio"      ,"$backupFolder\Dr-Copied-UK-Audio"      ,"F:\Sync\Dr-Copied-UK-Audio")      ,
+  (0,"E:\Dropbox\JH\d-F+F"             ,"$backupFolder\Dr-JH-d-F+F"             ,"F:\Sync\Dr-JH-d-F+F")             ,
+  (1,"E:\Dropbox\JH\d-Stack"           ,"$backupFolder\Dr-JH-d-Stack"           ,"F:\Sync\Dr-JH-d-Stack")         ,
+  (1,"E:\Dropbox\JH\d-Theatre"         ,"$backupFolder\Dr-JH-d-Theatre"         ,"F:\Sync\Dr-JH-d-Theatre")         ,
   (1,"E:\Dropbox\JH\k-Close"           ,"$backupFolder\Dr-JH-k-Close"           ,"G:\k-Close")                   ,
   (1,"E:\Dropbox\JH\k-Further"         ,"$backupFolder\Dr-JH-k-Further"         ,"G:\k-Further")                 ,
   (1,"E:\Dropbox\JH\k-Now"             ,"$backupFolder\Dr-JH-k-Now"             ,"G:\k-Now")                     ,
   (1,"E:\Dropbox\JH\k-Work"            ,"$backupFolder\Dr-JH-k-Work"            ,"G:\k-Work")                    ,
-  (1,"E:\Dropbox\Photos"               ,"$backupFolder\Dr-Photos"               ,"F:\Sync\Photos")               ,
-  (1,"E:\IT-Copied"                    ,"$backupFolder\IT-Copied"               ,"F:Sync\IT-Copied")             ,
-  (1,"E:\IT-DebianBased-Copied"        ,"$backupFolder\IT-DebianBased-Copied"   ,"F:Sync\IT-DebianBased-Copied") ,
-  (1,"E:\More"                         ,"$backupFolder\More"                    ,"F:Sync\More")                  ,
+  (1,"E:\Dropbox\Photos"               ,"$backupFolder\Dr-Photos"               ,"F:\Sync\Dr-Photos")               ,
+  (1,"E:\IT-Copied"                    ,"$backupFolder\IT-Copied"               ,"F:\Sync\IT-Copied")             ,
+  (1,"E:\IT-DebianBased-Copied"        ,"$backupFolder\IT-DebianBased-Copied"   ,"F:\Sync\IT-DebianBased-Copied") ,
+  (1,"E:\More"                         ,"$backupFolder\More"                    ,"F:\Sync\More")                  ,
   (0,0                                 ,0                                       ,0) # dummy row
   )
 

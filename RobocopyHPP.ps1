@@ -14,11 +14,11 @@ $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
   #   gVim  Tabularize/,/l0l0l0  then view in a larger window
   #
-  (0,"E:\Dropbox\Copied"               ,"$backupFolder\Dr-Copied"               ,"F:\Sync\Dr-Copied")               ,
-  (0,"E:\Dropbox\Copied-Music-toPlay"  ,"$backupFolder\Dr-Copied-Music-toPlay"  ,"F:\Sync\Dr-Copied-Music-toPlay")  ,
-  (0,"E:\Dropbox\Copied-OutThere-Audio","$backupFolder\Dr-Copied-OutThere-Audio","F:\Sync\Dr-Copied-OutThere-Audio"),
-  (0,"E:\Dropbox\Copied-UK-Audio"      ,"$backupFolder\Dr-Copied-UK-Audio"      ,"F:\Sync\Dr-Copied-UK-Audio")      ,
-  (0,"E:\Dropbox\JH\d-F+F"             ,"$backupFolder\Dr-JH-d-F+F"             ,"F:\Sync\Dr-JH-d-F+F")             ,
+  (1,"E:\Dropbox\Copied"               ,"$backupFolder\Dr-Copied"               ,"F:\Sync\Dr-Copied")               ,
+  (1,"E:\Dropbox\Copied-Music-toPlay"  ,"$backupFolder\Dr-Copied-Music-toPlay"  ,"F:\Sync\Dr-Copied-Music-toPlay")  ,
+  (1,"E:\Dropbox\Copied-OutThere-Audio","$backupFolder\Dr-Copied-OutThere-Audio","F:\Sync\Dr-Copied-OutThere-Audio"),
+  (1,"E:\Dropbox\Copied-UK-Audio"      ,"$backupFolder\Dr-Copied-UK-Audio"      ,"F:\Sync\Dr-Copied-UK-Audio")      ,
+  (1,"E:\Dropbox\JH\d-F+F"             ,"$backupFolder\Dr-JH-d-F+F"             ,"F:\Sync\Dr-JH-d-F+F")             ,
   (1,"E:\Dropbox\JH\d-Stack"           ,"$backupFolder\Dr-JH-d-Stack"           ,"F:\Sync\Dr-JH-d-Stack")         ,
   (1,"E:\Dropbox\JH\d-Theatre"         ,"$backupFolder\Dr-JH-d-Theatre"         ,"F:\Sync\Dr-JH-d-Theatre")         ,
   (1,"E:\Dropbox\JH\k-Close"           ,"$backupFolder\Dr-JH-k-Close"           ,"G:\k-Close")                   ,

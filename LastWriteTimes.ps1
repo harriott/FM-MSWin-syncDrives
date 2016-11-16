@@ -66,6 +66,7 @@ if ( !($USBParent[2]) -or $USBParents[3] ) {
         if ( $FolderControl[0] ) {
             # Go ahead, if the local folder exists:
             if ( Test-Path $FolderControl[1] ) {
+                $localParentlength=$FolderControl[1].length
                 # Get all the local files recursively:
                 echo "Getting  $($FolderControl[1])  child-items"
                 $localitems = gci $FolderControl[1] -r | where {$_.psIsContainer -eq $false}
@@ -73,17 +74,29 @@ if ( !($USBParent[2]) -or $USBParents[3] ) {
                 foreach ($i in 2,3) {
                     if ($USBParent[$i] ) { # checking that the USB drive's there
                         if ( Test-Path $FolderControl[$i] ) { # and the USB folder exists
-                            $ts = Get-Date
+                            $tsc = Get-Date
                             "- comparing against  $($FolderControl[$i])"
                             $totalCount = $localitems.Count
-                            $i = 0
+                            $j = 0
                             $localitems | %{
-                                $i = $i + 1
-                                Write-Progress -Activity "Searching Files" -status "Searching File  $i of     $totalCount" -percentComplete ($i / $localitems.Count * 100)
-                                $localfn=$_.fullname.substring(11)
+                                $j = $j + 1
+                                Write-Progress -Activity "Searching Files" -status "Searching File  $j of     $totalCount" -percentComplete ($j / $localitems.Count * 100)
+                                $localFile=$_.fullname.substring($localParentlength)
                                 $liLWT=$_.LastWriteTime
-                                $USBfn=$FolderControl[$i]+$localfn
+                                $USBFile=$FolderControl[$i]+$localFile
+                                if (test-path "$USBFile"){
+                                    $USBitem=gci "$USBFile"
+                                    $USBLWT=$USBitem.LastWriteTime
+                                    $USBAhead=[math]::Round((NEW-TIMESPAN -Start $liLWT -End $USBLWT).totalseconds)
+                                } else{
+                                    $USBAhead="-"
+                                }
+                                if ($USBAhead -ne "0"){ "{0,10} {1,-1}" -f $USBAhead, $USBFile >> $USBOutF[$i] }
                             }
+                            "" >> $USBOutF[$i]
+                            $tec = (new-timespan -start $tsc -end (Get-Date)).totalseconds
+                            echo "- took $tec seconds" >> $USBOutF[$i]
+                            "" >> $USBOutF[$i]
                         }
                     }
                 }

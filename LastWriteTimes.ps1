@@ -12,20 +12,20 @@ $FoldersArray = @(
     #   gVim  Tabularize/,/l0l0l0  then view in a larger window
     #
     (0,0                                 ,"$SyncDir"                         ,"G:"         ), # for folder-identifying, later
-    (1,"E:\Dropbox\Copied"               ,"$SyncDir\Dr-Copied"               ,0            ),
+    (0,"E:\Dropbox\Copied"               ,"$SyncDir\Dr-Copied"               ,0            ),
     (0,"E:\Dropbox\Copied-Music-toPlay"  ,"$SyncDir\Dr-Copied-Music-toPlay"  ,0            ),
     (0,"E:\Dropbox\Copied-OutThere-Audio","$SyncDir\Dr-Copied-OutThere-Audio",0            ),
     (0,"E:\Dropbox\Copied-UK-Audio"      ,"$SyncDir\Dr-Copied-UK-Audio"      ,0            ),
     (0,"E:\Dropbox\JH\d-F+F"             ,"$SyncDir\Dr-JH-d-F+F"             ,0            ),
     (0,"E:\Dropbox\JH\d-Stack"           ,"$SyncDir\Dr-JH-d-Stack"           ,0            ),
     (0,"E:\Dropbox\JH\d-Theatre"         ,"$SyncDir\Dr-JH-d-Theatre"         ,0            ),
-    (1,"E:\Dropbox\JH\k-Copied"          ,"$SyncDir\Dr-JH-k-Copied"          ,"G:\k-Copied"),
+    (0,"E:\Dropbox\JH\k-Copied"          ,"$SyncDir\Dr-JH-k-Copied"          ,"G:\k-Copied"),
     (0,"E:\Dropbox\JH\k-Now"             ,"$SyncDir\Dr-JH-k-Now"             ,"G:\k-Now"   ),
     (0,"E:\Dropbox\JH\k-Then0"           ,"$SyncDir\Dr-JH-k-Then0"           ,"G:\k-Then0" ),
     (0,"E:\Dropbox\JH\k-Then1"           ,"$SyncDir\Dr-JH-k-Then1"           ,"G:\k-Then1" ),
     (0,"E:\Dropbox\JH\k-Work"            ,"$SyncDir\Dr-JH-k-Work"            ,"G:\k-Work"  ),
     (0,"E:\Dropbox\Photos"               ,"$SyncDir\Dr-Photos"               ,0            ),
-    (0,"E:\IT-Copied"                    ,"$SyncDir\IT-Copied"               ,0            ),
+    (1,"E:\IT-Copied"                    ,"$SyncDir\IT-Copied"               ,0            ),
     (0,"E:\IT-DebianBased-Copied"        ,"$SyncDir\IT-DebianBased-Copied"   ,0            ),
     (0,"E:\More"                         ,"$SyncDir\More"                    ,0            ),
     (0,0                                 ,0                                  ,0            ) # dummy row, all 0
@@ -84,8 +84,8 @@ if ( !($USBParent[2]) -or $USBParents[3] ) {
                                 $localFile=$_.fullname.substring($localParentlength)
                                 $liLWT=$_.LastWriteTime
                                 $USBFile=$FolderControl[$i]+$localFile
-                                if (test-path "$USBFile"){
-                                    $USBitem=gci "$USBFile"
+                                if (Test-Path -literalPath "$USBFile"){
+                                    $USBitem=gci -literalPath "$USBFile"
                                     $USBLWT=$USBitem.LastWriteTime
                                     $USBAhead=[math]::Round((NEW-TIMESPAN -Start $liLWT -End $USBLWT).totalseconds)
                                 } else{

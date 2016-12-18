@@ -1,4 +1,4 @@
-# Joseph Harriott  http://momentary.eu/  Thu 03 Nov 2016
+# Joseph Harriott  http://momentary.eu/  Sun 18 Dec 2016
 
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
@@ -13,23 +13,27 @@ $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
   #   gVim  Tabularize/,/l0l0l0  then view in a larger window
   #
-  (1,"E:\Dropbox\Copied"               ,"$backupFolder\Dr-Copied"               ,"F:\Sync\Dr-Copied")               ,
-  (1,"E:\Dropbox\Copied-Music-toPlay"  ,"$backupFolder\Dr-Copied-Music-toPlay"  ,"F:\Sync\Dr-Copied-Music-toPlay")  ,
-  (1,"E:\Dropbox\Copied-OutThere-Audio","$backupFolder\Dr-Copied-OutThere-Audio","F:\Sync\Dr-Copied-OutThere-Audio"),
-  (1,"E:\Dropbox\Copied-UK-Audio"      ,"$backupFolder\Dr-Copied-UK-Audio"      ,"F:\Sync\Dr-Copied-UK-Audio")      ,
-  (1,"E:\Dropbox\JH\d-F+F"             ,"$backupFolder\Dr-JH-d-F+F"             ,"F:\Sync\Dr-JH-d-F+F")             ,
-  (1,"E:\Dropbox\JH\d-Stack"           ,"$backupFolder\Dr-JH-d-Stack"           ,"F:\Sync\Dr-JH-d-Stack")           ,
-  (1,"E:\Dropbox\JH\d-Theatre"         ,"$backupFolder\Dr-JH-d-Theatre"         ,"F:\Sync\Dr-JH-d-Theatre")         ,
-  (1,"E:\Dropbox\JH\k-Copied"          ,"$backupFolder\Dr-JH-k-Copied"          ,"F:\Sync\Dr-JH-k-Copied")          ,
-  (1,"E:\Dropbox\JH\k-Now"             ,"$backupFolder\Dr-JH-k-Now"             ,"F:\Sync\Dr-JH-k-Now")             ,
-  (1,"E:\Dropbox\JH\k-Then0"           ,"$backupFolder\Dr-JH-k-Then0"           ,"F:\Sync\Dr-JH-k-Then0")           ,
-  (1,"E:\Dropbox\JH\k-Then1"           ,"$backupFolder\Dr-JH-k-Then1"           ,"F:\Sync\Dr-JH-k-Then1")           ,
-  (1,"E:\Dropbox\JH\k-Work"            ,"$backupFolder\Dr-JH-k-Work"            ,"F:\Sync\Dr-JH-k-Work")            ,
-  (1,"E:\Dropbox\Photos"               ,"$backupFolder\Dr-Photos"               ,"F:\Sync\Dr-Photos")               ,
-  (1,"E:\IT-Copied"                    ,"$backupFolder\IT-Copied"               ,"F:\Sync\IT-Copied")               ,
-  (1,"E:\IT-DebianBased-Copied"        ,"$backupFolder\IT-DebianBased-Copied"   ,"F:\Sync\IT-DebianBased-Copied")   ,
-  (1,"E:\More"                         ,"$backupFolder\More"                    ,"F:\Sync\More")                    ,
-  (0,0                                 ,0                                       ,0) # dummy row
+  (1,"E:\Dropbox\CA-OutThere-UK"  ,"$backupFolder\Dr-CA-OutThere-UK"    ,"F:\Sync\Dr-CA-OutThere-UK")    ,
+  (1,"E:\Dropbox\CAMusic-Europe"  ,"$backupFolder\Dr-CAMusic-Europe"    ,"F:\Sync\Dr-CAMusic-Europe")    ,
+  (1,"E:\Dropbox\CAMusic-Germanic","$backupFolder\Dr-CAMusic-Germanic"  ,"F:\Sync\Dr-CAMusic-Germanic")  ,
+  (1,"E:\Dropbox\CAMusic-USA"     ,"$backupFolder\Dr-CAMusic-USA"       ,"F:\Sync\Dr-CAMusic-USA")       ,
+  (1,"E:\Dropbox\CAMusic-West"    ,"$backupFolder\Dr-CAMusic-West"      ,"F:\Sync\Dr-CAMusic-West")      ,
+  (1,"E:\Dropbox\CAMusic-World"   ,"$backupFolder\Dr-CAMusic-World"     ,"F:\Sync\Dr-CAMusic-World")     ,
+  (1,"E:\Dropbox\CAudio-OutThere" ,"$backupFolder\Dr-CAudio-OutThere"   ,"F:\Sync\Dr-CAudio-OutThere")   ,
+  (1,"E:\Dropbox\Copied"          ,"$backupFolder\Dr-Copied"            ,"F:\Sync\Dr-Copied")            ,
+  (1,"E:\Dropbox\JH\d-F+F"        ,"$backupFolder\Dr-JH-d-F+F"          ,"F:\Sync\Dr-JH-d-F+F")          ,
+  (1,"E:\Dropbox\JH\d-Stack"      ,"$backupFolder\Dr-JH-d-Stack"        ,"F:\Sync\Dr-JH-d-Stack")        ,
+  (1,"E:\Dropbox\JH\d-Theatre"    ,"$backupFolder\Dr-JH-d-Theatre"      ,"F:\Sync\Dr-JH-d-Theatre")      ,
+  (1,"E:\Dropbox\JH\k-Copied"     ,"$backupFolder\Dr-JH-k-Copied"       ,"F:\Sync\Dr-JH-k-Copied")       ,
+  (1,"E:\Dropbox\JH\k-Now"        ,"$backupFolder\Dr-JH-k-Now"          ,"F:\Sync\Dr-JH-k-Now")          ,
+  (1,"E:\Dropbox\JH\k-Then0"      ,"$backupFolder\Dr-JH-k-Then0"        ,"F:\Sync\Dr-JH-k-Then0")        ,
+  (1,"E:\Dropbox\JH\k-Then1"      ,"$backupFolder\Dr-JH-k-Then1"        ,"F:\Sync\Dr-JH-k-Then1")        ,
+  (1,"E:\Dropbox\JH\k-Work"       ,"$backupFolder\Dr-JH-k-Work"         ,"F:\Sync\Dr-JH-k-Work")         ,
+  (1,"E:\Dropbox\Photos"          ,"$backupFolder\Dr-Photos"            ,"F:\Sync\Dr-Photos")            ,
+  (1,"E:\IT-Copied"               ,"$backupFolder\IT-Copied"            ,"F:\Sync\IT-Copied")            ,
+  (1,"E:\IT-DebianBased-Copied"   ,"$backupFolder\IT-DebianBased-Copied","F:\Sync\IT-DebianBased-Copied"),
+  (1,"E:\More"                    ,"$backupFolder\More"                 ,"F:\Sync\More")                 ,
+  (0,0                            ,0                                    ,0) # dummy row
   )
 
 # Dialogue with myself:
@@ -97,6 +101,7 @@ foreach ($FolderControl in $FoldersArray) {
         $toFolder = $FolderControl3
         $LogFile = $toFolder+"_fromHPP.log"
       } else {
+        $FAT = " /fft" # allows for fractional times on external drive
         $frFolder = $FolderControl3
         $toFolder = $FolderControl[1]
         $LogFile = $frFolder+"_toHPP.log"

@@ -1,4 +1,4 @@
-# Joseph Harriott  http://momentary.eu/  Sun 18 Dec 2016
+# Joseph Harriott  http://momentary.eu/  Sat 04 Feb 2017
 
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
@@ -19,11 +19,13 @@ $FoldersArray = @(
   (1,"E:\Dropbox\CAMusic-USA"     ,"$backupFolder\Dr-CAMusic-USA"       ,"F:\Sync\Dr-CAMusic-USA")       ,
   (1,"E:\Dropbox\CAMusic-West"    ,"$backupFolder\Dr-CAMusic-West"      ,"F:\Sync\Dr-CAMusic-West")      ,
   (1,"E:\Dropbox\CAMusic-World"   ,"$backupFolder\Dr-CAMusic-World"     ,"F:\Sync\Dr-CAMusic-World")     ,
+  (1,"E:\Dropbox\CAudio-Music"    ,"$backupFolder\Dr-CAudio-Music"      ,"F:\Sync\Dr-CAudio-Music")      ,
   (1,"E:\Dropbox\CAudio-OutThere" ,"$backupFolder\Dr-CAudio-OutThere"   ,"F:\Sync\Dr-CAudio-OutThere")   ,
-  (1,"E:\Dropbox\Copied"          ,"$backupFolder\Dr-Copied"            ,"F:\Sync\Dr-Copied")            ,
+  (1,"E:\Dropbox\Copied-OutThere" ,"$backupFolder\Dr-Copied-OutThere"   ,"F:\Sync\Dr-Copied-OutThere")   ,
   (1,"E:\Dropbox\JH\d-F+F"        ,"$backupFolder\Dr-JH-d-F+F"          ,"F:\Sync\Dr-JH-d-F+F")          ,
   (1,"E:\Dropbox\JH\d-Stack"      ,"$backupFolder\Dr-JH-d-Stack"        ,"F:\Sync\Dr-JH-d-Stack")        ,
   (1,"E:\Dropbox\JH\d-Theatre"    ,"$backupFolder\Dr-JH-d-Theatre"      ,"F:\Sync\Dr-JH-d-Theatre")      ,
+  (1,"E:\Dropbox\JH\d-toReduce"   ,"$backupFolder\Dr-JH-d-toReduce"     ,"F:\Sync\Dr-JH-d-toReduce")     ,
   (1,"E:\Dropbox\JH\k-Copied"     ,"$backupFolder\Dr-JH-k-Copied"       ,"F:\Sync\Dr-JH-k-Copied")       ,
   (1,"E:\Dropbox\JH\k-Now"        ,"$backupFolder\Dr-JH-k-Now"          ,"F:\Sync\Dr-JH-k-Now")          ,
   (1,"E:\Dropbox\JH\k-Then0"      ,"$backupFolder\Dr-JH-k-Then0"        ,"F:\Sync\Dr-JH-k-Then0")        ,

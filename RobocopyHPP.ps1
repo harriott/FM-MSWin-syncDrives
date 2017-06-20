@@ -1,4 +1,4 @@
-# Joseph Harriott  http://momentary.eu/  Sat 04 Feb 2017
+# Joseph Harriott  http://momentary.eu/  Tue 18 Apr 2017
 
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
@@ -13,25 +13,28 @@ $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
   #   gVim  Tabularize/,/l0l0l0  then view in a larger window
   #
-  (1,"E:\Dropbox\CA-OutThere-UK"  ,"$backupFolder\Dr-CA-OutThere-UK"    ,"F:\Sync\Dr-CA-OutThere-UK")    ,
-  (1,"E:\Dropbox\CAMusic-Europe"  ,"$backupFolder\Dr-CAMusic-Europe"    ,"F:\Sync\Dr-CAMusic-Europe")    ,
-  (1,"E:\Dropbox\CAMusic-Germanic","$backupFolder\Dr-CAMusic-Germanic"  ,"F:\Sync\Dr-CAMusic-Germanic")  ,
-  (1,"E:\Dropbox\CAMusic-USA"     ,"$backupFolder\Dr-CAMusic-USA"       ,"F:\Sync\Dr-CAMusic-USA")       ,
-  (1,"E:\Dropbox\CAMusic-West"    ,"$backupFolder\Dr-CAMusic-West"      ,"F:\Sync\Dr-CAMusic-West")      ,
-  (1,"E:\Dropbox\CAMusic-World"   ,"$backupFolder\Dr-CAMusic-World"     ,"F:\Sync\Dr-CAMusic-World")     ,
-  (1,"E:\Dropbox\CAudio-Music"    ,"$backupFolder\Dr-CAudio-Music"      ,"F:\Sync\Dr-CAudio-Music")      ,
-  (1,"E:\Dropbox\CAudio-OutThere" ,"$backupFolder\Dr-CAudio-OutThere"   ,"F:\Sync\Dr-CAudio-OutThere")   ,
-  (1,"E:\Dropbox\Copied-OutThere" ,"$backupFolder\Dr-Copied-OutThere"   ,"F:\Sync\Dr-Copied-OutThere")   ,
-  (1,"E:\Dropbox\JH\d-F+F"        ,"$backupFolder\Dr-JH-d-F+F"          ,"F:\Sync\Dr-JH-d-F+F")          ,
-  (1,"E:\Dropbox\JH\d-Stack"      ,"$backupFolder\Dr-JH-d-Stack"        ,"F:\Sync\Dr-JH-d-Stack")        ,
-  (1,"E:\Dropbox\JH\d-Theatre"    ,"$backupFolder\Dr-JH-d-Theatre"      ,"F:\Sync\Dr-JH-d-Theatre")      ,
-  (1,"E:\Dropbox\JH\d-toReduce"   ,"$backupFolder\Dr-JH-d-toReduce"     ,"F:\Sync\Dr-JH-d-toReduce")     ,
-  (1,"E:\Dropbox\JH\k-Copied"     ,"$backupFolder\Dr-JH-k-Copied"       ,"F:\Sync\Dr-JH-k-Copied")       ,
-  (1,"E:\Dropbox\JH\k-Now"        ,"$backupFolder\Dr-JH-k-Now"          ,"F:\Sync\Dr-JH-k-Now")          ,
-  (1,"E:\Dropbox\JH\k-Then0"      ,"$backupFolder\Dr-JH-k-Then0"        ,"F:\Sync\Dr-JH-k-Then0")        ,
-  (1,"E:\Dropbox\JH\k-Then1"      ,"$backupFolder\Dr-JH-k-Then1"        ,"F:\Sync\Dr-JH-k-Then1")        ,
-  (1,"E:\Dropbox\JH\k-Work"       ,"$backupFolder\Dr-JH-k-Work"         ,"F:\Sync\Dr-JH-k-Work")         ,
-  (1,"E:\Dropbox\Photos"          ,"$backupFolder\Dr-Photos"            ,"F:\Sync\Dr-Photos")            ,
+  (0,"E:\Dropbox\CA-Buddhism"     ,"$backupFolder\Dr-CA-Buddhism"       ,"F:\Sync\Dr-CA-Buddhism")       ,
+  (0,"E:\Dropbox\CA-OutThere-UK"  ,"$backupFolder\Dr-CA-OutThere-UK"    ,"F:\Sync\Dr-CA-OutThere-UK")    ,
+  (0,"E:\Dropbox\CA-Theravada"    ,"$backupFolder\Dr-CA-Theravada"      ,"F:\Sync\Dr-CA-Theravada")      ,
+  (0,"E:\Dropbox\CAMusic-Europe"  ,"$backupFolder\Dr-CAMusic-Europe"    ,"F:\Sync\Dr-CAMusic-Europe")    ,
+  (0,"E:\Dropbox\CAMusic-Germanic","$backupFolder\Dr-CAMusic-Germanic"  ,"F:\Sync\Dr-CAMusic-Germanic")  ,
+  (0,"E:\Dropbox\CAMusic-USA"     ,"$backupFolder\Dr-CAMusic-USA"       ,"F:\Sync\Dr-CAMusic-USA")       ,
+  (0,"E:\Dropbox\CAMusic-West"    ,"$backupFolder\Dr-CAMusic-West"      ,"F:\Sync\Dr-CAMusic-West")      ,
+  (0,"E:\Dropbox\CAMusic-World"   ,"$backupFolder\Dr-CAMusic-World"     ,"F:\Sync\Dr-CAMusic-World")     ,
+  (0,"E:\Dropbox\CAudio-Music"    ,"$backupFolder\Dr-CAudio-Music"      ,"F:\Sync\Dr-CAudio-Music")      ,
+  (0,"E:\Dropbox\CAudio-OutThere" ,"$backupFolder\Dr-CAudio-OutThere"   ,"F:\Sync\Dr-CAudio-OutThere")   ,
+  (0,"E:\Dropbox\Copied-OutThere" ,"$backupFolder\Dr-Copied-OutThere"   ,"F:\Sync\Dr-Copied-OutThere")   ,
+  (0,"E:\Dropbox\JH\Copied"       ,"$backupFolder\Dr-JH-Copied"         ,"F:\Sync\Dr-JH-Copied")         ,
+  (0,"E:\Dropbox\JH\F+F"          ,"$backupFolder\Dr-JH-F+F"            ,"F:\Sync\Dr-JH-F+F")            ,
+  (0,"E:\Dropbox\JH\IT_stack"     ,"$backupFolder\Dr-JH-IT_stack"       ,"F:\Sync\Dr-JH-IT_stack")       ,
+  (0,"E:\Dropbox\JH\k-Work"       ,"$backupFolder\Dr-JH-k-Work"         ,"F:\Sync\Dr-JH-k-Work")         ,
+  (0,"E:\Dropbox\JH\Now"          ,"$backupFolder\Dr-JH-Now"            ,"F:\Sync\Dr-JH-Now")            ,
+  (0,"E:\Dropbox\JH\Stack"        ,"$backupFolder\Dr-JH-Stack"          ,"F:\Sync\Dr-JH-Stack")          ,
+  (0,"E:\Dropbox\JH\Theatre"      ,"$backupFolder\Dr-JH-Theatre"        ,"F:\Sync\Dr-JH-Theatre")        ,
+  (0,"E:\Dropbox\JH\Then0"        ,"$backupFolder\Dr-JH-Then0"          ,"F:\Sync\Dr-JH-Then0")          ,
+  (0,"E:\Dropbox\JH\Then1"        ,"$backupFolder\Dr-JH-Then1"          ,"F:\Sync\Dr-JH-Then1")          ,
+  (0,"E:\Dropbox\JH\toReduce"     ,"$backupFolder\Dr-JH-toReduce"       ,"F:\Sync\Dr-JH-toReduce")       ,
+  (0,"E:\Dropbox\Photos"          ,"$backupFolder\Dr-Photos"            ,"F:\Sync\Dr-Photos")            ,
   (1,"E:\IT-Copied"               ,"$backupFolder\IT-Copied"            ,"F:\Sync\IT-Copied")            ,
   (1,"E:\IT-DebianBased-Copied"   ,"$backupFolder\IT-DebianBased-Copied","F:\Sync\IT-DebianBased-Copied"),
   (1,"E:\More"                    ,"$backupFolder\More"                 ,"F:\Sync\More")                 ,
@@ -77,6 +80,7 @@ if ($reply -ceq "b") {"Okay, running backups to $backupFolder`n"}
 # Prepare a file to log all of the changes made:
 $ThisScript = $PSCommandPath.TrimStart($PSScriptRoot)
 $ChangesLog = "E:\"+$ThisScript.TrimEnd("ps1")+"log"
+if ( Test-Path $ChangesLog ) { ri $ChangesLog } # to have current date assigned to $ChangesLog
 "vim: nowrap tw=0:" > $ChangesLog
 "" >> $ChangesLog
 if ( $simulate ) { $simulated = " (SIMULATED)" } else { $simulated ="" }

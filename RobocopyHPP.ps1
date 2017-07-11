@@ -13,7 +13,7 @@ $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
   #   gVim  Tabularize/,/l0l0l0  then view in a larger window
   #
-  (0,"E:\Dropbox\CA-Buddhism"     ,"$backupFolder\Dr-CA-Buddhism"       ,"F:\Sync\Dr-CA-Buddhism")       ,
+  (1,"E:\Dropbox\CA-Buddhism"     ,"$backupFolder\Dr-CA-Buddhism"       ,"F:\Sync\Dr-CA-Buddhism")       ,
   (0,"E:\Dropbox\CA-OutThere-UK"  ,"$backupFolder\Dr-CA-OutThere-UK"    ,"F:\Sync\Dr-CA-OutThere-UK")    ,
   (0,"E:\Dropbox\CA-Theravada"    ,"$backupFolder\Dr-CA-Theravada"      ,"F:\Sync\Dr-CA-Theravada")      ,
   (0,"E:\Dropbox\CAMusic-Europe"  ,"$backupFolder\Dr-CAMusic-Europe"    ,"F:\Sync\Dr-CAMusic-Europe")    ,
@@ -35,9 +35,9 @@ $FoldersArray = @(
   (0,"E:\Dropbox\JH\Then1"        ,"$backupFolder\Dr-JH-Then1"          ,"F:\Sync\Dr-JH-Then1")          ,
   (0,"E:\Dropbox\JH\toReduce"     ,"$backupFolder\Dr-JH-toReduce"       ,"F:\Sync\Dr-JH-toReduce")       ,
   (0,"E:\Dropbox\Photos"          ,"$backupFolder\Dr-Photos"            ,"F:\Sync\Dr-Photos")            ,
-  (1,"E:\IT-Copied"               ,"$backupFolder\IT-Copied"            ,"F:\Sync\IT-Copied")            ,
-  (1,"E:\IT-DebianBased-Copied"   ,"$backupFolder\IT-DebianBased-Copied","F:\Sync\IT-DebianBased-Copied"),
-  (1,"E:\More"                    ,"$backupFolder\More"                 ,"F:\Sync\More")                 ,
+  (0,"E:\IT-Copied"               ,"$backupFolder\IT-Copied"            ,"F:\Sync\IT-Copied")            ,
+  (0,"E:\IT-DebianBased-Copied"   ,"$backupFolder\IT-DebianBased-Copied","F:\Sync\IT-DebianBased-Copied"),
+  (0,"E:\More"                    ,"$backupFolder\More"                 ,"F:\Sync\More")                 ,
   (0,0                            ,0                                    ,0) # dummy row
   )
 
@@ -98,16 +98,15 @@ foreach ($FolderControl in $FoldersArray) {
       if ( ! $(Try { Test-Path $toFolder.trim() } Catch { $false }) ) { $AintThere = "Sorry, $toFolder  ain't there." }
       $LogFile = $toFolder+".log"
     } else {
+      $FAT = " /fft" # allows for fractional times on external drive
       $FolderControl3 = $FolderControl[3]
       if ( ! $(Try { Test-Path $FolderControl3.trim() } Catch { $false }) ) {
           $AintThere = "Sorry, $FolderControl3  ain't there." }
-      if ( $FolderControl3 -match "^G:" ) { $FAT = " /fft" } else { $FAT ="" }
       if ($reply -eq "t") {
         $frFolder = $FolderControl[1]
         $toFolder = $FolderControl3
         $LogFile = $toFolder+"_fromHPP.log"
       } else {
-        $FAT = " /fft" # allows for fractional times on external drive
         $frFolder = $FolderControl3
         $toFolder = $FolderControl[1]
         $LogFile = $frFolder+"_toHPP.log"

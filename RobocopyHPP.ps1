@@ -1,4 +1,4 @@
-# Joseph Harriott  http://momentary.eu/  Thu 21 Dec 2017
+# Joseph Harriott  http://momentary.eu/  Tue 27 Feb 2018
 
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
@@ -13,15 +13,11 @@ $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
   #   gVim  Tabularize/,/l0l0l0  then view in a larger window
   #
+  (0,"E:\Dropbox\CAB-Theravada"     ,"$backupFolder\Dr-CAB-Theravada"     ,"F:\Sync\Dr-CAB-Theravada")     ,
   (0,"E:\Dropbox\CA-Buddhism"       ,"$backupFolder\Dr-CA-Buddhism"       ,"F:\Sync\Dr-CA-Buddhism")       ,
   (0,"E:\Dropbox\CA-OutThere-UK"    ,"$backupFolder\Dr-CA-OutThere-UK"    ,"F:\Sync\Dr-CA-OutThere-UK")    ,
-  (0,"E:\Dropbox\CA-Theravada"      ,"$backupFolder\Dr-CA-Theravada"      ,"F:\Sync\Dr-CA-Theravada")      ,
-  (0,"E:\Dropbox\CAMusic-Europe"    ,"$backupFolder\Dr-CAMusic-Europe"    ,"F:\Sync\Dr-CAMusic-Europe")    ,
+  (0,"E:\Dropbox\CAMusic"           ,"$backupFolder\Dr-CAMusic"           ,"F:\Sync\Dr-CAMusic")           ,
   (0,"E:\Dropbox\CAMusic-fromSharon","$backupFolder\Dr-CAMusic-fromSharon","F:\Sync\Dr-CAMusic-fromSharon"),
-  (0,"E:\Dropbox\CAMusic-Germanic"  ,"$backupFolder\Dr-CAMusic-Germanic"  ,"F:\Sync\Dr-CAMusic-Germanic")  ,
-  (0,"E:\Dropbox\CAMusic-USA"       ,"$backupFolder\Dr-CAMusic-USA"       ,"F:\Sync\Dr-CAMusic-USA")       ,
-  (0,"E:\Dropbox\CAMusic-West"      ,"$backupFolder\Dr-CAMusic-West"      ,"F:\Sync\Dr-CAMusic-West")      ,
-  (0,"E:\Dropbox\CAMusic-World"     ,"$backupFolder\Dr-CAMusic-World"     ,"F:\Sync\Dr-CAMusic-World")     ,
   (0,"E:\Dropbox\CAudio-OutThere"   ,"$backupFolder\Dr-CAudio-OutThere"   ,"F:\Sync\Dr-CAudio-OutThere")   ,
   (0,"E:\Dropbox\Copied-OutThere"   ,"$backupFolder\Dr-Copied-OutThere"   ,"F:\Sync\Dr-Copied-OutThere")   ,
   (0,"E:\Dropbox\JH\Copied"         ,"$backupFolder\Dr-JH-Copied"         ,"F:\Sync\Dr-JH-Copied")         ,

@@ -16,6 +16,7 @@ $FoldersArray = @(
   "F+F",
   "IT_stack",
   "Now",
+  "Stack",
   "Theatre0",
   "Theatre1",
   "Then0",

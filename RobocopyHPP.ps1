@@ -1,4 +1,4 @@
-# Joseph Harriott  http://momentary.eu/  Thu 08 Mar 2018
+# Joseph Harriott  http://momentary.eu/  Thu 15 Mar 2018
 
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS C:\Users\Joseph> E:\Files\IT_stack\SyncPortableDrives\RobocopyHPP.ps1
@@ -75,7 +75,7 @@ if ($reply -ceq "b") {"Okay, running backups to $backupFolder`n"}
 
 # Prepare a file to log all of the changes made:
 $ThisScript = $PSCommandPath.TrimStart($PSScriptRoot)
-$ChangesLog = "E:\"+$ThisScript.TrimEnd("ps1")+"log"
+$ChangesLog = "E:\Dropbox\"+$ThisScript.TrimEnd("ps1")+"log"
 if ( Test-Path $ChangesLog ) { ri $ChangesLog } # to have current date assigned to $ChangesLog
 "vim: nowrap tw=0:" > $ChangesLog
 "" >> $ChangesLog

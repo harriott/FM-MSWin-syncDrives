@@ -2,12 +2,12 @@
 
 # Backups only more vital data folders from  HPP  to  a smaller drive
 # -------------------------------------------------------------------
-# E: SDSSDA240G
-# G: the smaller storage
+# D: BX200
+# E: the smaller bacukup storage
 
 # Prepare a file to log all of the changes made:
 $ThisScript = $PSCommandPath.TrimStart($PSScriptRoot)
-$ChangesLog = "G:\"+$ThisScript.TrimEnd("ps1")+"log"
+$ChangesLog = "E:\"+$ThisScript.TrimEnd("ps1")+"log"
 "vim: nowrap tw=0:" > $ChangesLog
 "" >> $ChangesLog
 
@@ -28,10 +28,10 @@ $FoldersArray = @(
 # Do the work:
 foreach ($FC in $FoldersArray) {
   if ( $FC ) {
-    $Glog="G:\k-$FC"+"_fromHPP.log"
+    $Glog="E:\k-$FC"+"_fromHPP.log"
     "vim: nowrap tw=0:" > $Glog
     "" >> $Glog
-    $Command = "robocopy /mir E:\Dropbox\JH\$FC G:\$FC /np /unilog+:$Glog /tee /fft"
+    $Command = "robocopy /mir D:\Dropbox\JH\$FC E:\$FC /np /unilog+:$Glog /tee /fft"
     iex $Command # Comment this line to disable the file copying
     $Command >> $ChangesLog
     gc $Glog | select-string '    New File|    Newer|    Older|`*EXTRA File|  New Dir|`*EXTRA Dir' >> $ChangesLog

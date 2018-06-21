@@ -1,22 +1,19 @@
-# Joseph Harriott  http://momentary.eu/  Tue 19 Jun 2018
+# Joseph Harriott  http://momentary.eu/  Wed 20 Jun 2018
 
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS> D:\Dropbox\JH\IT_stack\onGitHub\SyncPortableDrives\RobocopyHPP.ps1
 # ----------------------------------------------------------------------
 
+# Drives:
 # D: BX200
 # F: SM3
-$backupFolder = "F:\Robocopy-backup-HPP"
+$backupFolder = "F:\SyncRcBu"
 $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
   #   gVim  Tabularize/,/l0l0l0  then view in a larger window
   #
-  (1,"D:\Dropbox\CAB-Theravada"  ,"$backupFolder\Dr-CAB-Theravada"     ,"F:\Sync\Dr-CAB-Theravada")     ,
-  (1,"D:\Dropbox\CA-Buddhism"    ,"$backupFolder\Dr-CA-Buddhism"       ,"F:\Sync\Dr-CA-Buddhism")       ,
-  (1,"D:\Dropbox\CA-OutThere-UK" ,"$backupFolder\Dr-CA-OutThere-UK"    ,"F:\Sync\Dr-CA-OutThere-UK")    ,
-  (1,"D:\Dropbox\CAMusic"        ,"$backupFolder\Dr-CAMusic"           ,"F:\Sync\Dr-CAMusic")           ,
   (1,"D:\Dropbox\CAM-fromSharon" ,"$backupFolder\Dr-CAM-fromSharon"    ,"F:\Sync\Dr-CAM-fromSharon")    ,
-  (1,"D:\Dropbox\CAudio-OutThere","$backupFolder\Dr-CAudio-OutThere"   ,"F:\Sync\Dr-CAudio-OutThere")   ,
+  (1,"D:\Dropbox\CAMusic"        ,"$backupFolder\Dr-CAMusic"           ,"F:\Sync\Dr-CAMusic")           ,
   (1,"D:\Dropbox\Copied-OutThere","$backupFolder\Dr-Copied-OutThere"   ,"F:\Sync\Dr-Copied-OutThere")   ,
   (1,"D:\Dropbox\JH\Copied"      ,"$backupFolder\Dr-JH-Copied"         ,"F:\Sync\Dr-JH-Copied")         ,
   (1,"D:\Dropbox\JH\F+F"         ,"$backupFolder\Dr-JH-F+F"            ,"F:\Sync\Dr-JH-F+F")            ,
@@ -30,9 +27,6 @@ $FoldersArray = @(
   (1,"D:\Dropbox\JH\toReduce"    ,"$backupFolder\Dr-JH-toReduce"       ,"F:\Sync\Dr-JH-toReduce")       ,
   (1,"D:\Dropbox\JH\Work"        ,"$backupFolder\Dr-JH-Work"           ,"F:\Sync\Dr-JH-Work")           ,
   (1,"D:\Dropbox\Photos"         ,"$backupFolder\Dr-Photos"            ,"F:\Sync\Dr-Photos")            ,
-  (1,"D:\IT-Copied"              ,"$backupFolder\IT-Copied"            ,"F:\Sync\IT-Copied")            ,
-  (1,"D:\IT-DebianBased-Copied"  ,"$backupFolder\IT-DebianBased-Copied","F:\Sync\IT-DebianBased-Copied"),
-  (1,"D:\More"                   ,"$backupFolder\More"                 ,"F:\Sync\More")                 ,
   (0,0                           ,0                                    ,0) # dummy row
   )
 
@@ -72,73 +66,11 @@ if ($reply -ceq "b") {"Okay, running backups to $backupFolder`n"}
       $simulate = " /l"
   } else { exit }
 
-# Prepare a file to log all of the changes made:
+# Prepare variables for log file:
 $ThisScript = $PSCommandPath.TrimStart($PSScriptRoot)
 $ChangesLog = "D:\Dropbox\"+$ThisScript.TrimEnd("ps1")+"log"
-if ( Test-Path $ChangesLog ) { ri $ChangesLog } # to have current date assigned to $ChangesLog
-"vim: nowrap tw=0:" > $ChangesLog
-"" >> $ChangesLog
-if ( $simulate ) { $simulated = " (SIMULATED)" } else { $simulated ="" }
-"Changes made by $ThisScript$simulated`:" >> $ChangesLog
 
-# Attempt to do the work requested:
-foreach ($FolderControl in $FoldersArray) {
-  # check that this folder is wanted:
-  if ( $FolderControl[0] ) {
-    # prepare the from & to folders:
-    $AintThere = ""
-    if ($reply -ceq "b") {
-      $frFolder = $FolderControl[1]
-      $toFolder = $FolderControl[2]
-      if ( ! $(Try { Test-Path $toFolder.trim() } Catch { $false }) ) { $AintThere = "Sorry, $toFolder  ain't there." }
-      $LogFile = $toFolder+".log"
-    } else {
-      $FAT = " /fft" # allows for fractional times on external drive
-      $FolderControl3 = $FolderControl[3]
-      if ( ! $(Try { Test-Path $FolderControl3.trim() } Catch { $false }) ) {
-          $AintThere = "Sorry, $FolderControl3  ain't there." }
-      if ($reply -eq "t") {
-        $frFolder = $FolderControl[1]
-        $toFolder = $FolderControl3
-        $LogFile = $toFolder+"_fromHPP.log"
-      } else {
-        $frFolder = $FolderControl3
-        $toFolder = $FolderControl[1]
-        $LogFile = $frFolder+"_toHPP.log"
-      }
-    }
-    # ready to go ahead, prepare:
-    $frFolder
-    $toFolder
-    # do the Robocopy:
-    if ($AintThere) {
-      [System.Console]::ForegroundColor = 'Yellow'
-      $AintThere
-      [System.Console]::ResetColor()
-      ""
-      "" >> $ChangesLog
-      "$AintThere" >> $ChangesLog
-    } else {
-      $LogFile
-      "vim: nowrap tw=0:" > $LogFile
-      "" >> $LogFile
-      $Command1 = "robocopy /mir $frFolder $toFolder /np /unilog+:$LogFile /tee"+$simulate+$FAT
-      [System.Console]::ForegroundColor = 'Yellow'
-      $Command1
-      [System.Console]::ResetColor()
-      "$Command1" >> $LogFile
-      iex $Command1 # Comment this line to disable the file copying
-      # log the changes:
-      "" >> $ChangesLog
-      $Command1 >> $ChangesLog
-      "logging any changes to $ChangesLog"
-      ""
-      gc $LogFile | select-string '    New File|    Newer|    Older|`*EXTRA File|  New Dir|`*EXTRA Dir' >> $ChangesLog
-    }
-  }
-}
-""
+# Do the work:
+$Progress = "/NP"
+. $PSScriptRoot\RoboWork.ps1
 
-# Sign off:
-Write-Host "All done and logged individually, with all of the changes saved together to  $ChangesLog" -background darkcyan -foreground white
-""

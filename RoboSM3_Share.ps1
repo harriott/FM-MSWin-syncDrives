@@ -1,4 +1,4 @@
-# Joseph Harriott  http://momentary.eu/  Wed 20 Jun 2018
+# Joseph Harriott  http://momentary.eu/  Fri 22 Jun 2018
 
 # Backup my Share files.
 # PS> D:\Dropbox\JH\IT_stack\onGitHub\SyncPortableDrives\RobocopySM3_Share.ps1
@@ -6,7 +6,7 @@
 
 # Drives:
 # F: SM3
-$backupFolder = "F:\RcBuShare"
+$backupFolder = "F:\ShareRcBu"
 $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
   #   gVim  Tabularize/,/l0l0l0  then view in a larger window

@@ -1,4 +1,4 @@
-# Joseph Harriott  http://momentary.eu/  Fri 22 Jun 2018
+# Joseph Harriott  http://momentary.eu/  Mon 25 Jun 2018
 
 # Backup my Share files.
 # PS> D:\Dropbox\JH\IT_stack\onGitHub\SyncPortableDrives\RobocopySM3_Share.ps1
@@ -23,11 +23,7 @@ $FoldersArray = @(
   )
 
 # Dialogue with myself:
-""
-"Joseph, this Powershell script will use Robocopy to mirror your personal folders."
-[System.Console]::BackgroundColor = 'DarkCyan'
-[System.Console]::ForegroundColor = 'White'
-""
+. $PSScriptRoot\Colours.ps1
 $reply = Read-Host "Do you want to backup (B) F:\Share\ (or simulate (b))? "
 [System.Console]::ResetColor()
 ""

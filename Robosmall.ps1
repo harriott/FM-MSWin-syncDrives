@@ -38,4 +38,3 @@ foreach ($FC in $FoldersArray) {
     "" >> $ChangesLog
   }
 }
-

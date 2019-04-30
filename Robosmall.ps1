@@ -1,4 +1,4 @@
-# vim: set et tw=0:
+# vim: set et fdl=2 tw=0:
 
 # Backups only more vital data folders from  HPP  to  a smaller drive
 # -------------------------------------------------------------------
@@ -28,7 +28,7 @@ $FoldersArray = @(
 # Do the work:
 foreach ($FC in $FoldersArray) {
   if ( $FC ) {
-    $Glog="E:\k-$FC"+"_fromHPP.log"
+    $Glog="E:\folder-$FC"+"_fromHPP.log"
     "vim: nowrap tw=0:" > $Glog
     "" >> $Glog
     $Command = "robocopy /mir D:\Dropbox\JH\$FC E:\$FC /np /unilog+:$Glog /tee /fft"

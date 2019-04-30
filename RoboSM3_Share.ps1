@@ -1,8 +1,8 @@
 # Joseph Harriott  http://momentary.eu/  Mon 25 Jun 2018
 
 # Backup my Share files.
-# PS> D:\Dropbox\JH\IT_stack\onGitHub\SyncPortableDrives\RobocopySM3_Share.ps1
-# ----------------------------------------------------------------------
+# PS> D:\Dropbox\JH\IT_stack\onGitHub\SyncPortableDrives\RoboSM3_Share.ps1
+# ------------------------------------------------------------------------
 
 # Drives:
 # F: SM3

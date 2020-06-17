@@ -1,3 +1,5 @@
+# vim: set et fdl=2:
+#
 # Joseph Harriott  http://momentary.eu/  Sun 08 Jul 2018
 
 # To be sourced!

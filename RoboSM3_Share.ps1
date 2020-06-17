@@ -11,13 +11,13 @@ $FoldersArray = @(
   # first element of each row allows for that row to be switched off, by setting to 0
   #   gVim  Tabularize/,/l0l0l0  then view in a larger window
   #
-  (1,"F:\Share\AV-Stack"                 ,"$backupFolder\AV-Stack")                 ,
-  (1,"F:\Share\Dr-CAT-Buddhism"          ,"$backupFolder\Dr-CAT-Buddhism")          ,
-  (1,"F:\Share\Dr-CAT-Buddhism-Theravada","$backupFolder\Dr-CAT-Buddhism-Theravada"),
-  (1,"F:\Share\Dr-CAT-OutThere"          ,"$backupFolder\Dr-CAT-OutThere")          ,
-  (1,"F:\Share\Dr-CAT-OutThere-UK"       ,"$backupFolder\Dr-CAT-OutThere-UK")       ,
-  (1,"F:\Share\IT-Copied"                ,"$backupFolder\IT-Copied")                ,
-  (1,"F:\Share\IT-DebianBased-Copied"    ,"$backupFolder\IT-DebianBased-Copied")    ,
+  (0,"F:\Share\AV-Stack"                 ,"$backupFolder\AV-Stack")                 ,
+  (0,"F:\Share\Dr-CAT-Buddhism"          ,"$backupFolder\Dr-CAT-Buddhism")          ,
+  (0,"F:\Share\Dr-CAT-Buddhism-Theravada","$backupFolder\Dr-CAT-Buddhism-Theravada"),
+  (0,"F:\Share\Dr-CAT-OutThere"          ,"$backupFolder\Dr-CAT-OutThere")          ,
+  (0,"F:\Share\Dr-CAT-OutThere-UK"       ,"$backupFolder\Dr-CAT-OutThere-UK")       ,
+  (0,"F:\Share\IT-Copied"                ,"$backupFolder\IT-Copied")                ,
+  (0,"F:\Share\IT-DebianBased-Copied"    ,"$backupFolder\IT-DebianBased-Copied")    ,
   (1,"F:\Share\More"                     ,"$backupFolder\More")                     ,
   (0,0                                   ,0) # dummy row                            ,to close
   )

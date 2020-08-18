@@ -1,4 +1,5 @@
-# Joseph Harriott  http://momentary.eu/  Mon 25 Jun 2018
+
+# Joseph Harriott  http://momentary.eu/  Tue 18 Aug 2020
 
 # Sync/backup my personal files to/from HPP:11-n012na
 # PS> D:\Dropbox\JH\IT_stack\onGitHub\SyncPortableDrives\RobocopyHPP.ps1
@@ -28,6 +29,7 @@ $FoldersArray = @(
   )
 
 # Okay, go:
-. $PSScriptRoot\Colours.ps1
+$parent=(get-item $PSScriptRoot).parent
+. $parent\Colours.ps1
 $ThisScript = $PSCommandPath.TrimStart($PSScriptRoot)
-. $PSScriptRoot\Sync.ps1
+. $parent\Sync.ps1

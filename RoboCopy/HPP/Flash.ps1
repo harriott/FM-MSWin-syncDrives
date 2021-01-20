@@ -13,14 +13,17 @@ $ChangesLog = "E:\"+$ThisScript.TrimEnd("ps1")+"log"
 
 $FoldersArray = @(
   "Cafezoide",
+  "CforWork",
   "Copied",
+  "core",
   "F+F",
-  "IT_stack",
   "Now",
+  "Technos",
   "Theatre0",
   "Theatre1",
   "Then0",
   "Then1",
+  "TP.default-release",
   "Work",
   0) # dummy item
 

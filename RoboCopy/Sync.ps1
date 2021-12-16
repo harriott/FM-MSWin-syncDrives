@@ -36,7 +36,7 @@ elseif ($reply -ceq "T") {
 } else { exit }
 
 # Prepare variables for log file:
-$ChangesLog = "D:\Dropbox\"+$ThisScript.TrimEnd("ps1")+"log"
+$ChangesLog = "$DROPBOX\"+$ThisScript.TrimEnd("ps1")+"log"
 
 # Do the work:
 $Progress = "/NP"

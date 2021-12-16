@@ -37,8 +37,8 @@ foreach ($FolderControl in $FoldersArray) {
       }
     }
     # ready to go ahead, prepare:
-    $frFolder
-    $toFolder
+    "from: $frFolder"
+    "  to: $toFolder"
     # do the Robocopy:
     if ($AintThere) {
       [System.Console]::ForegroundColor = 'Yellow'
@@ -48,7 +48,7 @@ foreach ($FolderControl in $FoldersArray) {
       "" >> $ChangesLog
       "$AintThere" >> $ChangesLog
     } else {
-      $LogFile
+      " log: $LogFile"
       "vim: nowrap tw=0:" > $LogFile
       "" >> $LogFile
       $Command1 = "robocopy /mir $frFolder $toFolder $Progress /unilog+:$LogFile /tee"+$simulate+$FAT
@@ -70,4 +70,5 @@ foreach ($FolderControl in $FoldersArray) {
 
 # Sign off:
 Write-Host "All done and logged individually, with all of the changes saved together to  $ChangesLog" -background darkcyan -foreground white
+gvim -c "set columns=217 lines=54 | silent! /robocopy\ \/mir" $ChangesLog
 ""

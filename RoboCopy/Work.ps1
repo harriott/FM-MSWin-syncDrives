@@ -10,43 +10,53 @@ if ( Test-Path $ChangesLog ) { ri $ChangesLog } # to have current date assigned 
 if ( $simulate ) { $simulated = " (SIMULATED)" } else { $simulated ="" }
 "Changes made by $ThisScript$simulated`:" >> $ChangesLog
 
+Function tp {
+  $at = $args[0].trim()
+  if ( ! $(Try { Test-Path $at } Catch { $false }) ) {
+    if ($createTargets) { ni $at -type directory }
+    else { $global:AintThere = "Sorry, $at  ain't there." }
+  }
+}
+
 # Attempt to do the work requested:
 foreach ($FolderControl in $FoldersArray) {
   # check that this folder is wanted:
   if ( $FolderControl[0] ) {
     # prepare the from & to folders:
-    $AintThere = ""
+    $global:AintThere = ""
     if ($reply -ceq "b") {
       $frFolder = $FolderControl[1]
       $toFolder = $FolderControl[2]
-      if ( ! $(Try { Test-Path $toFolder.trim() } Catch { $false }) ) { $AintThere = "Sorry, $toFolder  ain't there." }
+      tp $toFolder
       $LogFile = $toFolder+".log"
     } else {
       $FAT = " /fft" # allows for fractional times on external drive
       $FolderControl3 = $FolderControl[3]
-      if ( ! $(Try { Test-Path $FolderControl3.trim() } Catch { $false }) ) {
-          $AintThere = "Sorry, $FolderControl3  ain't there." }
+      tp $FolderControl3
+      # if ( ! $(Try { Test-Path $FolderControl3.trim() } Catch { $false }) ) {
+          # $global:AintThere = "Sorry, $FolderControl3  ain't there." }
       if ($reply -eq "t") {
         $frFolder = $FolderControl[1]
         $toFolder = $FolderControl3
-        $LogFile = $toFolder+"_fromHPP.log"
+        $LogFile = $toFolder+"_from$Env:Computername.log"
       } else {
         $frFolder = $FolderControl3
         $toFolder = $FolderControl[1]
-        $LogFile = $frFolder+"_toHPP.log"
+        $LogFile = $frFolder+"_to$Env:Computername.log"
       }
     }
     # ready to go ahead, prepare:
     "from: $frFolder"
     "  to: $toFolder"
     # do the Robocopy:
-    if ($AintThere) {
+    # if ($create) { $AintThere = '' }
+    if ($global:AintThere) {
       [System.Console]::ForegroundColor = 'Yellow'
-      $AintThere
+      $global:AintThere
       [System.Console]::ResetColor()
       ""
       "" >> $ChangesLog
-      "$AintThere" >> $ChangesLog
+      "$global:AintThere" >> $ChangesLog
     } else {
       " log: $LogFile"
       "vim: nowrap tw=0:" > $LogFile

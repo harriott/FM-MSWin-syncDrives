@@ -19,7 +19,6 @@ $FoldersArray = @(
   "Now",
   "Technos",
   "Theatre0",
-  "Theatre1",
   "Then0",
   "Then1",
   "T91-default-release",

@@ -1,7 +1,7 @@
-# Joseph Harriott  http://momentary.eu/  Wed 20 Jun 2018
+#
+# Joseph Harriott  Thu 30 Jun 2022
 
-# To be sourced!
-# --------------
+# sourced by  Sync.ps1
 
 # Prepare a file to log all of the changes made:
 if ( Test-Path $ChangesLog ) { ri $ChangesLog } # to have current date assigned to $ChangesLog
@@ -72,3 +72,4 @@ foreach ($FolderControl in $FoldersArray) {
 Write-Host "All done and logged individually, with all of the changes saved together to  $ChangesLog" -background darkcyan -foreground white
 gvim -c "set columns=217 lines=54 | silent! /robocopy\ \/mir" $ChangesLog
 ""
+

@@ -4,6 +4,7 @@
 
 # To be sourced!
 # --------------
+# sourced by  $SPD\PD.ps1
 
 $reply = Read-Host "Do you want to backup (b), or mirror TO (T) portable drives (or simulate (t)),  or mirror FROM (F) (or simulate (f))? "
 [System.Console]::ResetColor()

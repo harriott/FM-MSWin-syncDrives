@@ -1,4 +1,4 @@
-#
+
 # Joseph Harriott  Thu 30 Jun 2022
 
 # sourced by  Sync.ps1
@@ -32,7 +32,6 @@ foreach ($FolderControl in $FoldersArray) {
     } else {
       $FAT = " /fft" # allows for fractional times on external drive
       $FolderControl3 = $FolderControl[3]
-      tp $FolderControl3
       # if ( ! $(Try { Test-Path $FolderControl3.trim() } Catch { $false }) ) {
           # $global:AintThere = "Sorry, $FolderControl3  ain't there." }
       if ($reply -eq "t") {
@@ -44,6 +43,7 @@ foreach ($FolderControl in $FoldersArray) {
         $toFolder = $FolderControl[1]
         $LogFile = $frFolder+"_to$Env:Computername.log"
       }
+      tp $toFolder
     }
     # ready to go ahead, prepare:
     "from: $frFolder"

@@ -1,6 +1,8 @@
 
-CompDirStructs
-==============
+$onGH/FM-SyncPortableDrives/README.md
 
-A Python 3 script that compares two directory structures recursively.  It lists unmatched directories, and oddly empty ones.  There's a regex block to exclude certain directories that should be empty.  Have a look inside to figure out how to use it in your own way.
+(File Manage on MicroSoft Windows) sync drives
+=
+
+A few `PowerShell` tools and one `Python` tool tailored to my drive backup needs.
 

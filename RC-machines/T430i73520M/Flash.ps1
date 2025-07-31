@@ -3,9 +3,10 @@
 
 # Thu 28 Jul 2022
 
+# $onGH/FM-MSWin-syncDrives/RC-machines/T430i73520M/Flash.ps1
+
 # backups only more vital data folders from T430i73520M to SD Card
 # ----------------------------------------------------------------
-# RCF  is defined in  $machine\PSProfile.ps1
 
 # C:
 # E: SDU64GB  (D: isn't always available)

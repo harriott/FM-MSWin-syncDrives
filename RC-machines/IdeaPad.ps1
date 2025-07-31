@@ -1,5 +1,7 @@
 # vim: set et fdl=3 tw=0:
 
+# $onGH/FM-MSWin-syncDrives/RC-machines/IdeaPad.ps1
+
 # Pulls useful data that won't fit in Lenovo IdeaPad 120s 81A4 C:
 # ---------------------------------------------------------------
 # D: L32GBC10

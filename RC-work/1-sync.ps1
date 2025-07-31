@@ -1,10 +1,10 @@
 # vim: set et fdl=2:
-#
+
+# $onGH/FM-MSWin-syncDrives/RC-work/1-sync.ps1
+
 # Joseph Harriott  http://momentary.eu/  Sun 08 Jul 2018
 
-# To be sourced!
-# --------------
-# sourced by  $SPD\PD.ps1
+# sourced by files in  $onGH/FM-MSWin-syncDrives/RC-machines
 
 $reply = Read-Host "Do you want to backup (b), or mirror TO (T) portable drives (or simulate (t)),  or mirror FROM (F) (or simulate (f))? "
 [System.Console]::ResetColor()
@@ -41,4 +41,5 @@ $ChangesLog = "$Drpbx\"+$ThisScript.TrimEnd("ps1")+"log"
 
 # Do the work:
 $Progress = "/NP"
-. $PSScriptRoot\Work.ps1
+. $onGH/FM-MSWin-syncDrives/RC-work/2-work.ps1
+
